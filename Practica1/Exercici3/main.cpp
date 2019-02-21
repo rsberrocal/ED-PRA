@@ -37,11 +37,16 @@ int getOpcio(vector<string> options) {
 void makeCircle(int *counter) {
     Cercle c;
     double radi;
-
+    double area;
     cout << "Introdueix un radi" << endl;
     cin >> radi;
-    cout << "El area d'aquest cercle és de " << c.getArea(radi) << endl;
-    (*counter)++;    
+    area = c.getArea(radi);
+    if (area == -1) {
+        cout << "S'ha produït una excepcio" << endl;
+    } else {
+        cout << "El area d'aquest cercle és de " << c.getArea(radi) << endl;
+        (*counter)++;
+    }
 }
 
 int main(int argc, char** argv) {

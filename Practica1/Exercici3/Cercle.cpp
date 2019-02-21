@@ -25,9 +25,10 @@ Cercle::~Cercle() {
 }
 
 bool Cercle::checkRadi(double radi) {
+
     if (radi < 0.1) {
-        return false;
         throw std::invalid_argument(" Atencio: aquest valor no es acceptat ");
+        return false;
     }
     return true;
 
@@ -36,8 +37,9 @@ bool Cercle::checkRadi(double radi) {
 double Cercle::getArea(double rad) {
     try {
         if (this->checkRadi(rad))
-            return 3.14 * rad * rad;
+            return 3.14 * rad * rad;        
     } catch (const std::invalid_argument& e) {
-        
+        std::cout << "Atencio: aquest valor no es acceptat" << std::endl;
+        return -1;
     }
 }
