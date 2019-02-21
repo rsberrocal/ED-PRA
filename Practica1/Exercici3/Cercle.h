@@ -19,7 +19,7 @@ public:
     Cercle();
     Cercle(const Cercle& orig);
     virtual ~Cercle();
-    virtual double getArea();
+    virtual double getArea(int rad);
 private:
 
 };

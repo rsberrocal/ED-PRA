@@ -34,13 +34,20 @@ int getOpcio(vector<string> options) {
     return opcion;
 }
 
-void makeCircle() {
-    Cercle c;    
+void makeCircle(int *counter) {
+    Cercle c;
+    int radi;
+
+    cout << "Introdueix un radi" << endl;
+    cin >> radi;
+    cout << "El area d'aquest cercle és de " << c.getArea(radi) << endl;
+    (*counter)++;
 }
 
 int main(int argc, char** argv) {
     string name;
     int opcio;
+    int countCercle = 0;    
     vector<string> arr_options = {"Sortir", "Introduir cercle"};
 
     cout << "Hola, com et dius?" << endl;
@@ -48,12 +55,13 @@ int main(int argc, char** argv) {
     cout << "Hola, " << name << ", que vols fer?" << endl;
 
     do {
-        opcio = getOpcio(arr_options);        
+        opcio = getOpcio(arr_options);
         switch (opcio) {
-            case 1:                
+            case 1:
                 break;
-            case 2:                
-                makeCircle();
+            case 2:
+                cout << "Cercle num " << countCercle << endl;
+                makeCircle(&countCercle);
                 break;
         }
     } while (opcio != 1);

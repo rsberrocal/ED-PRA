@@ -22,6 +22,6 @@ Cercle::Cercle(const Cercle& orig) {
 Cercle::~Cercle() {
 }
 
-double Cercle::getArea(){
-    return -1;
+double Cercle::getArea(int rad) {
+    return 3.14 * rad * rad;
 }
