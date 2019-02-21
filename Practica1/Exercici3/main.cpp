@@ -8,19 +8,20 @@
  * File:   main.cpp
  * Author: hmarkus
  *
- * Created on February 17, 2019, 12:33 PM
+ * Created on February 21, 2019, 9:41 AM
  */
 
 #include <cstdlib>
 #include <iostream>
 #include <vector>
 
+#include "Cercle.h"
+
 using namespace std;
 
 /*
  * 
  */
-
 int getOpcio(vector<string> options) {
     int opcion = -1;
     for (int i = 0; i < options.size(); i++) {
@@ -33,26 +34,26 @@ int getOpcio(vector<string> options) {
     return opcion;
 }
 
+void makeCircle() {
+    Cercle c;    
+}
+
 int main(int argc, char** argv) {
     string name;
     int opcio;
-    vector<string> arr_options = {"Sortir", "Benvinguda", "Redefinir el nom"};
+    vector<string> arr_options = {"Sortir", "Introduir cercle"};
 
     cout << "Hola, com et dius?" << endl;
     cin >> name;
     cout << "Hola, " << name << ", que vols fer?" << endl;
 
     do {
-        opcio = getOpcio(arr_options);
+        opcio = getOpcio(arr_options);        
         switch (opcio) {
-            case 1:
+            case 1:                
                 break;
-            case 2:
-                cout << "Benvingut/da a l'assignatura d'estructura de dades " << name << endl;
-                break;
-            case 3:
-                cout << "Tornam a dir el teu nom" << endl;
-                cin >> name;
+            case 2:                
+                makeCircle();
                 break;
         }
     } while (opcio != 1);
@@ -60,7 +61,7 @@ int main(int argc, char** argv) {
     /*
      * Uno de los dudas que tengo es como validar que es numero, supongo que mas adelante lo sabre.
      */
-    
+
     return 0;
 }
 
