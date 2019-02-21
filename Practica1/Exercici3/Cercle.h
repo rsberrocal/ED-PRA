@@ -13,13 +13,16 @@
 
 #ifndef CERCLE_H
 #define CERCLE_H
+#include <iostream>
+#include <cstdlib>
 
 class Cercle {
 public:
     Cercle();
     Cercle(const Cercle& orig);
     virtual ~Cercle();
-    virtual double getArea(int rad);
+    virtual bool checkRadi(double radi);
+    virtual double getArea(double rad);
 private:
 
 };

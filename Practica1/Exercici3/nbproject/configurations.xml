@@ -5,7 +5,6 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Cercle.h</itemPath>
-      <itemPath>Circle.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -43,8 +42,6 @@
       </item>
       <item path="Cercle.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Circle.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -71,8 +68,6 @@
       <item path="Cercle.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Cercle.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Circle.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
