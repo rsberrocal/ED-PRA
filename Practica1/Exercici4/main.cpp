@@ -13,9 +13,7 @@
 
 #include <cstdlib>
 #include <iostream>
-#include <sstream>
 #include <vector>
-#include <fstream>
 
 #include "Cercle.h"
 #include "Ellipse.h"
@@ -61,46 +59,8 @@ void makeFigure(int *counterC, int *counterEl) {
     }
 }
 
-getAreaCercle(float rad) {
-    Cercle c;
-    return c.getArea(rad);
-}
-
-getAreaEllipse(float r1, float r2) {
-    Ellipse e;
-    e.r1 = r1;
-    e.r2 = r2;
-    return e.getArea();
-}
-
 void getTotalFigures(int *counterC, int *counterEl) {
     cout << "Tens " << *counterC << " Cercles i " << *counterEl << " El·lipses" << endl;
-}
-
-void getFileFigures(int *counterC, int *counterEl) {
-    std::ifstream file("figures.txt");
-    std::string line;
-    string type;
-    float r1, r2, area;
-    while (std::getline(file, line)) {
-        istringstream iss(line);
-        iss >> type >> r1;
-        if (line != "\r") {
-            if (type == "E") {
-                iss >> r2;
-                area = getAreaEllipse(r1, r2);
-                (*counterEl)++;
-            } else {
-                area = getAreaCercle(r1);
-                (*counterC)++;
-            }
-            if (area == -1) {
-                cout << "S'ha produït una excepcio" << endl;
-            } else {
-                cout << "El area d'aquesta figura es de " << area << endl;
-            }
-        }
-    }
 }
 
 int main(int argc, char** argv) {
@@ -108,7 +68,7 @@ int main(int argc, char** argv) {
     int opcio;
     int countCercle = 0;
     int countEl = 0;
-    vector<string> arr_options = {"Sortir", "Afegir figura", "Glossari de figures", "Importar figures"};
+    vector<string> arr_options = {"Sortir", "Afegir figura", "Glossari de figures", "Importar desde un fitxer"};
 
     cout << "Hola, com et dius?" << endl;
     cin >> name;
@@ -124,9 +84,6 @@ int main(int argc, char** argv) {
                 break;
             case 3:
                 getTotalFigures(&countCercle, &countEl);
-                break;
-            case 4:
-                getFileFigures(&countCercle, &countEl);
                 break;
         }
     } while (opcio != 1);

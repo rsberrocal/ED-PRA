@@ -38,20 +38,22 @@ int getOpcio(vector<string> options) {
 }
 
 void makeFigure(int *counterC, int *counterEl) {
-    Cercle c;
-    Ellipse e;
     string userInput;
-    double area;
+    float area;
     string type;
     float r1, r2;
     cout << "Entra les dades de la teva figura (C o E, r1, r2, aquest ultim nomes en E)" << endl;
     cin >> type >> r1;
     if (type == "E") {
         cin >> r2;
-        area = e.getArea(r1, r2);
+        Ellipse *e = new Ellipse();
+        e->setRad(r1, r2);
+        area = e->getArea();
         (*counterEl)++;
     } else if (type == "C") {
-        area = c.getArea(r1);
+        Cercle *c = new Cercle();
+        c->setRad(r1);
+        area = c->getArea();
         (*counterC)++;
     }
     if (area == -1) {
@@ -59,18 +61,6 @@ void makeFigure(int *counterC, int *counterEl) {
     } else {
         cout << "El area d'aquesta figura és de " << area << endl;
     }
-}
-
-getAreaCercle(float rad) {
-    Cercle c;
-    return c.getArea(rad);
-}
-
-getAreaEllipse(float r1, float r2) {
-    Ellipse e;
-    e.r1 = r1;
-    e.r2 = r2;
-    return e.getArea();
 }
 
 void getTotalFigures(int *counterC, int *counterEl) {
@@ -88,10 +78,14 @@ void getFileFigures(int *counterC, int *counterEl) {
         if (line != "\r") {
             if (type == "E") {
                 iss >> r2;
-                area = getAreaEllipse(r1, r2);
+                Ellipse *e = new Ellipse();
+                e->setRad(r1, r2);
+                area = e->getArea();
                 (*counterEl)++;
             } else {
-                area = getAreaCercle(r1);
+                Cercle *c = new Cercle();
+                c->setRad(r1);
+                area = c->getArea();
                 (*counterC)++;
             }
             if (area == -1) {
