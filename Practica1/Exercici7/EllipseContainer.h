@@ -22,12 +22,12 @@ using namespace std;
 class EllipseContainer {
 public:
     int MAX_FIGURES;
-    vector <Ellipse> arrayEllipse;
+    vector <Ellipse*> arrayEllipse;
 
     EllipseContainer();
     EllipseContainer(const EllipseContainer& orig);
     virtual ~EllipseContainer();
-    virtual void addEllipse(Ellipse e);
+    virtual void addEllipse(Ellipse *e);
     virtual float getAreas();
 private:
 

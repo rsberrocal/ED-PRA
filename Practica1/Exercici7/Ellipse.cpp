@@ -25,6 +25,7 @@ Ellipse::Ellipse(const Ellipse& orig) {
 }
 
 Ellipse::~Ellipse() {
+    std::cout << "Soc el destructor de Cercle " << std::endl;
 }
 
 bool Ellipse::checkRadi(float r1) {

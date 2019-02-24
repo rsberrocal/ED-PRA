@@ -88,10 +88,6 @@ int main(int argc, char** argv) {
         }
     } while (opcio != 1);
 
-    /*
-     * Uno de los dudas que tengo es como validar que es numero, supongo que mas adelante lo sabre.
-     */
-
     return 0;
 }
 

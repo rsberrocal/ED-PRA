@@ -19,9 +19,7 @@
 using namespace std;
 
 EllipseContainer::EllipseContainer() {
-    /*this->MAX_FIGURES = 10;
-    vector<Ellipse> e(10);
-    this->arrayEllipse = e*/;
+    this->MAX_FIGURES = 10;
 }
 
 EllipseContainer::EllipseContainer(const EllipseContainer& orig) {
@@ -30,15 +28,18 @@ EllipseContainer::EllipseContainer(const EllipseContainer& orig) {
 EllipseContainer::~EllipseContainer() {
 }
 
-void EllipseContainer::addEllipse(Ellipse e) {
-    this->arrayEllipse.push_back(e);
+void EllipseContainer::addEllipse(Ellipse *e) {
+    if (this->arrayEllipse.size()<this->MAX_FIGURES) {
+        this->arrayEllipse.push_back(e);
+    } else {
+        std::cout << "Maxim de 10 figures " << endl;
+    }
 }
 
 float EllipseContainer::getAreas() {
     float res = 0;
     for (int i = 0; i < this->arrayEllipse.size(); i++) {
-        cout << endl << "Atencio:" << this->arrayEllipse.size() << endl;
-        res = res + (this->arrayEllipse[i].r1 * this->arrayEllipse[i].r2 * 3.14);
+        res = res + this->arrayEllipse[i]->r1 * this->arrayEllipse[i]->r2 * 3.14;
     }
     return res;
 }

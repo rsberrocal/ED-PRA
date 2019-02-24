@@ -23,6 +23,7 @@ Cercle::Cercle(const Cercle& orig) {
 }
 
 Cercle::~Cercle() {
+    std::cout << "Soc el destructor de Cercle " << std::endl;
 }
 
 bool Cercle::checkRad(float rad) {

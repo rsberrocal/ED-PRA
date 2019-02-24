@@ -50,13 +50,13 @@ void makeFigure(int *counterC, int *counterEl, EllipseContainer* eContainer) {
         Ellipse *e = new Ellipse();
         e->setRad(r1, r2);
         area = e->getArea();
-        eContainer->addEllipse(*e);
+        eContainer->addEllipse(e);
         (*counterEl)++;
     } else if (type == "C") {
         Cercle *c = new Cercle();
         c->setRad(r1);
         area = c->getArea();
-        eContainer->addEllipse(*c);
+        eContainer->addEllipse(c);
         (*counterC)++;
     }
     if (area == -1) {
@@ -84,13 +84,13 @@ void getFileFigures(int *counterC, int *counterEl, EllipseContainer *eContainer)
                 Ellipse *e = new Ellipse();
                 e->setRad(r1, r2);
                 area = e->getArea();
-                eContainer->addEllipse(*e);
+                eContainer->addEllipse(e);
                 (*counterEl)++;
             } else {
                 Cercle *c = new Cercle();
                 c->setRad(r1);
                 area = c->getArea();
-                eContainer->addEllipse(*c);
+                eContainer->addEllipse(c);
                 (*counterC)++;
             }
             if (area == -1) {
@@ -139,7 +139,12 @@ int main(int argc, char** argv) {
     } while (opcio != 1);
 
     /*
-     * Uno de los dudas que tengo es como validar que es numero, supongo que mas adelante lo sabre.
+     * a) La herencia nos permite poder reutilizar codigo y organizar mejor diferentes tipos de clases
+     * b) Pasaria que no nos dejaria hacer un override del metodo getArea
+     * c) Porque desde la clase base no especificamos que clase queremos instanciar
+     * d) Sí, seria mejor incluso ya que el area se calcula de la misma forma
+     * e) Nada más defino r1 y r2 en la clase Ellipse ya que con la herencia tambien lo tengo en la clase Cercle
+     * f) Se incrementa cada vez que se acaban las instruccion ya que es un loop
      */
 
     return 0;
