@@ -15,6 +15,8 @@
 #include <iostream>
 #include <vector>
 
+#include "ArrayQueue.h"
+
 using namespace std;
 
 /*
@@ -26,7 +28,7 @@ int getOpcio(vector<string> options) {
         cout << i + 1 << ". " << options[i] << endl;
     }
     cin >> opcion;
-    if (opcion > 2 || opcion < 1) {
+    if (opcion < 0 || opcion > options.size()) {
         cout << "Opció no valida" << endl;
     }
     return opcion;
@@ -41,15 +43,22 @@ int main(int argc, char** argv) {
         "Imprimir tot el contingut de l'ArrayQueue",
         "Sortir"
     };
+    ArrayQueue aQ(3);
     do {
         opcio = getOpcio(arr_options);
         switch (opcio) {
             case 1:
+                aQ.enqueue(3);
                 break;
             case 2:
                 break;
+            case 3:
+                break;
+            case 4:
+                break;
         }
     } while (opcio != 5);
+    
     return 0;
 }
 

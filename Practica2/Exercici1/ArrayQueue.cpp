@@ -12,9 +12,15 @@
  */
 
 #include "ArrayQueue.h"
+#include <iostream>
+
+using namespace std;
 
 ArrayQueue::ArrayQueue(const int max_size) {
-
+    this->_max_size = max_size;
+    std::vector<int> arr(max_size);
+    this->_data = arr;
+    cout << "Estructura creada" << endl;
 }
 
 void ArrayQueue::dequeue() {
@@ -22,7 +28,9 @@ void ArrayQueue::dequeue() {
 }
 
 void ArrayQueue::enqueue(const int key) {
-
+    this->_data.push_back(key);
+    cout << key <<endl;
+    cout << this->_data[0] << endl;
 }
 
 const int ArrayQueue::getFront() {
@@ -40,7 +48,6 @@ bool ArrayQueue::isFull() {
 void ArrayQueue::print() {
 
 }
-
 
 /*ArrayQueue::ArrayQueue(const ArrayQueue& orig) {
 }*/
