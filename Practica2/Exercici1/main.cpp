@@ -34,6 +34,43 @@ int getOpcio(vector<string> options) {
     return opcion;
 }
 
+void casProva1() {
+    try {
+        ArrayQueue aQ(3);
+        aQ.enqueue(10);
+        aQ.enqueue(20);
+        aQ.enqueue(30);
+        aQ.enqueue(40); //Trhow exception
+        aQ.print();
+        aQ.dequeue();
+        aQ.enqueue(40);
+        aQ.print();
+        delete &aQ;
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+}
+
+void casProva2() {
+    try {
+        ArrayQueue aQ(3);
+        aQ.enqueue(10);
+        cout << aQ.getFront() << endl;
+        aQ.enqueue(20);
+        aQ.enqueue(30);        
+        aQ.print();
+        aQ.dequeue();
+        cout << aQ.getFront() << endl;
+        aQ.dequeue();
+        aQ.dequeue();
+        aQ.dequeue();//trhow exception
+        aQ.print();
+        delete &aQ;
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+}
+
 int main(int argc, char** argv) {
     int opcio;
     vector<string> arr_options = {
@@ -43,12 +80,15 @@ int main(int argc, char** argv) {
         "Imprimir tot el contingut de l'ArrayQueue",
         "Sortir"
     };
-    ArrayQueue aQ(3);
+    /* PER AL CAS PROVA 1 */
+    casProva1();
+    /* PER AL CAS PROVA 2 */
+    casProva2();
+    
     do {
         opcio = getOpcio(arr_options);
         switch (opcio) {
-            case 1:
-                aQ.enqueue(3);
+            case 1:                
                 break;
             case 2:
                 break;
@@ -58,7 +98,7 @@ int main(int argc, char** argv) {
                 break;
         }
     } while (opcio != 5);
-    
+
     return 0;
 }
 

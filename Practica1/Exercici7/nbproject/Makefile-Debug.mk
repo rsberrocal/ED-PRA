@@ -65,22 +65,22 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/exercici7.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/exercici7 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/Cercle.o: Cercle.cpp
+${OBJECTDIR}/Cercle.o: Cercle.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Cercle.o Cercle.cpp
 
-${OBJECTDIR}/Ellipse.o: Ellipse.cpp
+${OBJECTDIR}/Ellipse.o: Ellipse.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Ellipse.o Ellipse.cpp
 
-${OBJECTDIR}/EllipseContainer.o: EllipseContainer.cpp
+${OBJECTDIR}/EllipseContainer.o: EllipseContainer.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EllipseContainer.o EllipseContainer.cpp
 
-${OBJECTDIR}/main.o: main.cpp
+${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
@@ -91,6 +91,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/exercici7.exe
 
 # Subprojects
 .clean-subprojects:
