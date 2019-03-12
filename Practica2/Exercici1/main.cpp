@@ -57,13 +57,13 @@ void casProva2() {
         aQ.enqueue(10);
         cout << aQ.getFront() << endl;
         aQ.enqueue(20);
-        aQ.enqueue(30);        
+        aQ.enqueue(30);
         aQ.print();
         aQ.dequeue();
         cout << aQ.getFront() << endl;
         aQ.dequeue();
         aQ.dequeue();
-        aQ.dequeue();//trhow exception
+        aQ.dequeue(); //trhow exception
         aQ.print();
         delete &aQ;
     } catch (invalid_argument &e) {
@@ -73,6 +73,8 @@ void casProva2() {
 
 int main(int argc, char** argv) {
     int opcio;
+    int key;
+    ArrayQueue aQ(100);
     vector<string> arr_options = {
         "Inserir element a la cua",
         "Treure element de la cua",
@@ -84,17 +86,35 @@ int main(int argc, char** argv) {
     casProva1();
     /* PER AL CAS PROVA 2 */
     casProva2();
-    
+
     do {
         opcio = getOpcio(arr_options);
         switch (opcio) {
-            case 1:                
+            case 1:
+                cout << "Dona'm un element a afegir" << endl;
+                cin >> key;
+                try {
+                    aQ.enqueue(key);
+                } catch (invalid_argument &e) {
+                    cout << "EXCEPTION:" << e.what() << endl;
+                }
                 break;
             case 2:
+                try {
+                    aQ.dequeue();
+                } catch (invalid_argument &e) {
+                    cout << "EXCEPTION:" << e.what() << endl;
+                }
                 break;
             case 3:
+                try {
+                    cout << "El primer numero es " << aQ.getFront() << endl;
+                } catch (invalid_argument &e) {
+                    cout << "EXCEPTION:" << e.what() << endl;
+                }
                 break;
             case 4:
+                aQ.print();
                 break;
         }
     } while (opcio != 5);
