@@ -6,22 +6,40 @@
  */
 
 #ifndef NODE_H
-#define	NODE_H
+#define NODE_H
+
+#include <cstddef>
 
 
+template <class T>
 class Node {
 public:
     Node();
-    Node(int el);
+    Node(const T el);
     Node(const Node& orig);
     virtual ~Node();
-    int getElement()const;
+    T getElement()const;
     Node* getNext()const;
-    void setNext(Node *);
+    void setNext(Node *n);
 private:
-    int element;
+    T element;
     Node next;
 };
 
-#endif	/* NODE_H */
+template <class T>
+Node<T>:: getElement() const{
+    return this->element;
+}
+
+template <class T>
+Node<T>::Node(const T el){
+    this->element = el;
+    this->next = nullptr;
+}
+
+Node<>::setNext(Node* n){
+    
+}
+
+#endif /* NODE_H */
 
