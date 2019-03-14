@@ -14,7 +14,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>LinkedQueue.cpp</itemPath>
+      <!-- <itemPath>LinkedQueue.cpp</itemPath> -->
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -39,8 +39,8 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="LinkedQueue.cpp" ex="false" tool="1" flavor2="0">
-      </item>
+      <!-- <item path="LinkedQueue.cpp" ex="false" tool="1" flavor2="0"> 
+      </item>-->
       <item path="LinkedQueue.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Node.h" ex="false" tool="3" flavor2="0">
@@ -68,8 +68,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="LinkedQueue.cpp" ex="false" tool="1" flavor2="0">
-      </item>
+      <!-- <item path="LinkedQueue.cpp" ex="false" tool="1" flavor2="0"> 
+      </item>-->
       <item path="LinkedQueue.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Node.h" ex="false" tool="3" flavor2="0">

@@ -10,7 +10,6 @@
 
 #include <cstddef>
 
-
 template <class T>
 class Node {
 public:
@@ -27,18 +26,19 @@ private:
 };
 
 template <class T>
-Node<T>:: getElement() const{
+T Node<T>::getElement() const {
     return this->element;
 }
 
 template <class T>
-Node<T>::Node(const T el){
+Node<T>::Node(const T el) {
     this->element = el;
     this->next = nullptr;
 }
 
-Node<>::setNext(Node* n){
-    
+template <class T>
+void Node<T>::setNext(Node* n) {
+    this->next = n;
 }
 
 #endif /* NODE_H */
