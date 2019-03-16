@@ -18,15 +18,15 @@ public:
     Node(const Node& orig);
     virtual ~Node();
     T getElement()const;
-    Node* getNext()const;
-    void setNext(Node *n);
+    Node<T>* getNext()const;
+    void setNext(Node<T> *n);
 private:
     T element;
-    Node next;
+    Node<T>* next;
 };
 
 template <class T>
-T Node<T>::getElement() const {
+T Node<T>::getElement() const {    
     return this->element;
 }
 
@@ -41,5 +41,12 @@ void Node<T>::setNext(Node* n) {
     this->next = n;
 }
 
+template <class T>
+Node<T>* Node<T>::getNext() const{
+    return this->next;
+}
+
+template <class T>
+Node<T>::~Node(){};
 #endif /* NODE_H */
 

@@ -34,16 +34,21 @@ LinkedQueue<T>::LinkedQueue() {
     this->_front = nullptr;
     this->_rear = nullptr;
 }
+
 template <class T>
-LinkedQueue<T>::~LinkedQueue(){
-    
+LinkedQueue<T>::~LinkedQueue() {
+
 }
 
 template <class T>
 void LinkedQueue<T>::enqueue(const T key) {
-    Node<T> newNode(key);
-    this->_rear->setNext(&newNode);
-    this->_rear = &newNode;
+    Node<T>* newNode = new Node<T>(key);
+    if (this->isEmpty()) {
+        this->_front = newNode;
+    } else {
+        this->_rear->setNext(newNode);
+    }
+    this->_rear = newNode;
     this->_size++;
 }
 
@@ -54,8 +59,8 @@ void LinkedQueue<T>::dequeue() {
 }
 
 template <class T>
-const T LinkedQueue<T>::getFront() {
-    return this->_front;
+const T LinkedQueue<T>::getFront() {    
+    return this->_front->getElement();
 }
 
 template <class T>
@@ -66,8 +71,8 @@ bool LinkedQueue<T>::isEmpty() {
 }
 
 template <class T>
-void LinkedQueue<T>::print(){
-    
+void LinkedQueue<T>::print() {
+
 }
 
 #endif /* LINKEDQUEUE_H */

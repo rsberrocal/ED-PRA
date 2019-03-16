@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
         "Imprimir tot el contingut de l'ArrayQueue",
         "Sortir"
     };
-    LinkedQueue<int> T;
+    LinkedQueue<int> lQueue;
     /* PER AL CAS PROVA 1 */
     //casProva1();
     /* PER AL CAS PROVA 2 */
@@ -64,32 +64,35 @@ int main(int argc, char** argv) {
 
     do {
         opcio = getOpcio(arr_options);
-        /*switch (opcio) {
+        switch (opcio) {
             case 1:
                 cout << "Dona'm un element a afegir" << endl;
                 cin >> key;
-                try {                    
+                try {          
+                    lQueue.enqueue(key);
                 } catch (invalid_argument &e) {
                     cout << "EXCEPTION:" << e.what() << endl;
                 }
                 break;
             case 2:
-                try {                    
+                try {            
+                    lQueue.dequeue();
                 } catch (invalid_argument &e) {
                     cout << "EXCEPTION:" << e.what() << endl;
                 }
                 break;
             case 3:
-                try {                    
+                try {  
+                    cout << "El primer element es "<< lQueue.getFront() << endl;
                 } catch (invalid_argument &e) {
                     cout << "EXCEPTION:" << e.what() << endl;
                 }
                 break;
             case 4:               
                 break;
-        }*/
+        }
     } while (opcio != 5);
-
+    //delete &lQueue;
     return 0;
 }
 
