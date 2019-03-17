@@ -10,7 +10,7 @@
 
 #include <stdexcept>
 
-#include "Node.h"
+#include "FlightNode.h"
 using namespace std;
 
 template <class T>
@@ -27,8 +27,8 @@ public:
 
 private:
     int _size;
-    Node<T>* _front;
-    Node<T>* _rear;
+    FlightNode<T>* _front;
+    FlightNode<T>* _rear;
 };
 
 template <class T>
@@ -41,8 +41,8 @@ LinkedQueue<T>::LinkedQueue() {
 
 template <class T>
 LinkedQueue<T>::~LinkedQueue() {
-    Node<T>* actualNode = this->_front;
-    Node<T>* nodeToDelete;
+    FlightNode<T>* actualNode = this->_front;
+    FlightNode<T>* nodeToDelete;
     while (actualNode) {
         nodeToDelete = actualNode;
         actualNode = actualNode->getNext();
@@ -53,7 +53,7 @@ LinkedQueue<T>::~LinkedQueue() {
 
 template <class T>
 void LinkedQueue<T>::enqueue(const T key) {
-    Node<T>* newNode = new Node<T>(key);
+    FlightNode<T>* newNode = new FlightNode<T>(key);
     if (this->isEmpty()) {
         this->_front = newNode;
     } else {
@@ -91,7 +91,7 @@ bool LinkedQueue<T>::isEmpty() {
 
 template <class T>
 void LinkedQueue<T>::print() {
-    Node<T>* actualNode = this->_front;
+    FlightNode<T>* actualNode = this->_front;
     std::cout << "[";
     while (actualNode) {
         std::cout << actualNode->getElement();
@@ -105,12 +105,12 @@ void LinkedQueue<T>::print() {
 
 template <class T>
 LinkedQueue<T>::LinkedQueue(const LinkedQueue& orig) {
-    Node <T>* actualNode = orig._front;
+    FlightNode <T>* actualNode = orig._front;
     this->_front = nullptr;
     this->_rear = nullptr;
     this->_size = 0;
     while (actualNode) {
-        Node<T>* newNode = new Node<T>(actualNode->getElement());
+        FlightNode<T>* newNode = new FlightNode<T>(actualNode->getElement());
         //If is the first element, inserts front node, else, get rear and set next to newNode
         if (!this->_front) {
             this->_front = newNode;

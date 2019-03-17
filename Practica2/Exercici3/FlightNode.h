@@ -1,5 +1,5 @@
 /* 
- * File:   Node.h
+ * File:   FlightNode.h
  * Author: Rocho
  *
  * Created on 13 de marzo de 2019, 0:56
@@ -11,42 +11,42 @@
 #include <cstddef>
 
 template <class T>
-class Node {
+class FlightNode {
 public:
-    Node();
-    Node(const T el);
-    Node(const Node& orig);
-    virtual ~Node();
+    FlightNode();
+    FlightNode(const T el);
+    FlightNode(const FlightNode& orig);
+    virtual ~FlightNode();
     T getElement()const;
-    Node<T>* getNext()const;
-    void setNext(Node<T> *n);
+    FlightNode<T>* getNext()const;
+    void setNext(FlightNode<T> *n);
 private:
     T element;
-    Node<T>* next;
+    FlightNode<T>* next;
 };
 
 template <class T>
-T Node<T>::getElement() const {    
+T FlightNode<T>::getElement() const {    
     return this->element;
 }
 
 template <class T>
-Node<T>::Node(const T el) {
+FlightNode<T>::FlightNode(const T el) {
     this->element = el;
     this->next = nullptr;
 }
 
 template <class T>
-void Node<T>::setNext(Node* n) {
+void FlightNode<T>::setNext(FlightNode* n) {
     this->next = n;
 }
 
 template <class T>
-Node<T>* Node<T>::getNext() const{
+FlightNode<T>* FlightNode<T>::getNext() const{
     return this->next;
 }
 
 template <class T>
-Node<T>::~Node(){};
+FlightNode<T>::~FlightNode(){};
 #endif /* NODE_H */
 
