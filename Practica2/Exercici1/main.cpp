@@ -35,40 +35,109 @@ int getOpcio(vector<string> options) {
 }
 
 void casProva1() {
+    ArrayQueue aQ(3);
     try {
-        ArrayQueue aQ(3);
         aQ.enqueue(10);
-        aQ.enqueue(20);
-        aQ.enqueue(30);
-        aQ.enqueue(40); //Trhow exception
-        aQ.print();
-        aQ.dequeue();
-        aQ.enqueue(40);
-        aQ.print();
-        delete &aQ;
     } catch (invalid_argument &e) {
         cout << "EXCEPTION:" << e.what() << endl;
     }
+    try {
+        aQ.enqueue(20);
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        aQ.enqueue(30);
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        aQ.enqueue(40); //Trhow exception
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        aQ.print();
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        aQ.dequeue();
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        aQ.enqueue(40);
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        aQ.print();
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+
+    delete &aQ;
 }
 
 void casProva2() {
+    ArrayQueue aQ(3);
     try {
-        ArrayQueue aQ(3);
         aQ.enqueue(10);
-        cout << aQ.getFront() << endl;
-        aQ.enqueue(20);
-        aQ.enqueue(30);
-        aQ.print();
-        aQ.dequeue();
-        cout << aQ.getFront() << endl;
-        aQ.dequeue();
-        aQ.dequeue();
-        aQ.dequeue(); //trhow exception
-        aQ.print();
-        delete &aQ;
     } catch (invalid_argument &e) {
         cout << "EXCEPTION:" << e.what() << endl;
     }
+    try {
+        cout << aQ.getFront() << endl;
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        aQ.enqueue(20);
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        aQ.enqueue(30);
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        aQ.print();
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        aQ.dequeue();
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        cout << aQ.getFront() << endl;
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        aQ.dequeue();
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        aQ.dequeue();
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        aQ.dequeue(); //trhow exception
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        aQ.print();
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    delete &aQ;
 }
 
 int main(int argc, char** argv) {

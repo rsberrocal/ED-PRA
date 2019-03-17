@@ -59,7 +59,7 @@ void LinkedQueue<T>::dequeue() {
 }
 
 template <class T>
-const T LinkedQueue<T>::getFront() {    
+const T LinkedQueue<T>::getFront() {
     return this->_front->getElement();
 }
 
@@ -72,7 +72,15 @@ bool LinkedQueue<T>::isEmpty() {
 
 template <class T>
 void LinkedQueue<T>::print() {
-
+    Node<T>* actualNode = this->_front;
+    std::cout << "[";
+    while (actualNode) {        
+        std::cout << actualNode->getElement();
+        actualNode = actualNode->getNext();
+        if(actualNode)
+            std::cout<<", ";
+    }
+    std::cout << "]" << std::endl;
 }
 
 #endif /* LINKEDQUEUE_H */

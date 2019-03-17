@@ -28,27 +28,69 @@ int getOpcio(vector<string> options) {
     }
     return opcion;
 }
-/*
+
 void casProva1() {
+    LinkedQueue<int> prova1;
     try {
-        
+        prova1(10);
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        prova1(20);
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        prova1(30);
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        prova1.enqueue(40);
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        prova1.print();
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        prova1.dequeue();
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        prova1.enqueue(40);
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        prova1.print();
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+
+}
+
+void casProva2() {
+    try {
+
     } catch (invalid_argument &e) {
         cout << "EXCEPTION:" << e.what() << endl;
     }
 }
 
-void casProva2() {
-    try {
-               
-    } catch (invalid_argument &e) {
-        cout << "EXCEPTION:" << e.what() << endl;
-    }
-}
-*/
 int main(int argc, char** argv) {
     int opcio;
     int key;
-    
+
     vector<string> arr_options = {
         "Inserir element a la cua",
         "Treure element de la cua",
@@ -68,27 +110,28 @@ int main(int argc, char** argv) {
             case 1:
                 cout << "Dona'm un element a afegir" << endl;
                 cin >> key;
-                try {          
+                try {
                     lQueue.enqueue(key);
                 } catch (invalid_argument &e) {
                     cout << "EXCEPTION:" << e.what() << endl;
                 }
                 break;
             case 2:
-                try {            
+                try {
                     lQueue.dequeue();
                 } catch (invalid_argument &e) {
                     cout << "EXCEPTION:" << e.what() << endl;
                 }
                 break;
             case 3:
-                try {  
-                    cout << "El primer element es "<< lQueue.getFront() << endl;
+                try {
+                    cout << "El primer element es " << lQueue.getFront() << endl;
                 } catch (invalid_argument &e) {
                     cout << "EXCEPTION:" << e.what() << endl;
                 }
                 break;
-            case 4:               
+            case 4:
+                lQueue.print();
                 break;
         }
     } while (opcio != 5);
