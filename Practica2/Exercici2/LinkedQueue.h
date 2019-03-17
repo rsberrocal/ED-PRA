@@ -8,7 +8,10 @@
 #ifndef LINKEDQUEUE_H
 #define LINKEDQUEUE_H
 
+#include <stdexcept>
+
 #include "Node.h"
+using namespace std;
 
 template <class T>
 class LinkedQueue {
@@ -33,11 +36,19 @@ LinkedQueue<T>::LinkedQueue() {
     this->_size = 0;
     this->_front = nullptr;
     this->_rear = nullptr;
+    cout << "Estructura creada" << endl;
 }
 
 template <class T>
 LinkedQueue<T>::~LinkedQueue() {
-
+    Node<T>* actualNode = this->_front;
+    Node<T>* nodeToDelete;
+    while (actualNode) {
+        nodeToDelete = actualNode;
+        actualNode = actualNode->getNext();
+        delete nodeToDelete;
+    }
+    cout << "Estructura eliminada" << endl;
 }
 
 template <class T>
@@ -49,18 +60,26 @@ void LinkedQueue<T>::enqueue(const T key) {
         this->_rear->setNext(newNode);
     }
     this->_rear = newNode;
+    cout << "Element " << key << " agregat" << endl;
     this->_size++;
 }
 
 template <class T>
 void LinkedQueue<T>::dequeue() {
-    this->_front = this->_front->getNext();
-    this->_size--;
+    if (!isEmpty()) {
+        this->_front = this->_front->getNext();
+        this->_size--;
+    } else {
+        throw invalid_argument("L’estructura està buida");
+    }
 }
 
 template <class T>
 const T LinkedQueue<T>::getFront() {
-    return this->_front->getElement();
+    if (!isEmpty())
+        return this->_front->getElement();
+    throw invalid_argument("L’estructura està buida");
+    return -1;
 }
 
 template <class T>
@@ -74,13 +93,34 @@ template <class T>
 void LinkedQueue<T>::print() {
     Node<T>* actualNode = this->_front;
     std::cout << "[";
-    while (actualNode) {        
+    while (actualNode) {
         std::cout << actualNode->getElement();
         actualNode = actualNode->getNext();
-        if(actualNode)
-            std::cout<<", ";
+        if (actualNode)
+            std::cout << ", ";
     }
     std::cout << "]" << std::endl;
+}
+//Copy constructor
+
+template <class T>
+LinkedQueue<T>::LinkedQueue(const LinkedQueue& orig) {
+    Node <T>* actualNode = orig._front;
+    this->_front = nullptr;
+    this->_rear = nullptr;
+    this->_size = 0;
+    while (actualNode) {
+        Node<T>* newNode = new Node<T>(actualNode->getElement());
+        //If is the first element, inserts front node, else, get rear and set next to newNode
+        if (!this->_front) {
+            this->_front = newNode;
+        } else {
+            this->_rear->setNext(newNode);
+        }
+        this->_rear = newNode;
+        this->_size++;
+        actualNode = actualNode->getNext();
+    }
 }
 
 #endif /* LINKEDQUEUE_H */

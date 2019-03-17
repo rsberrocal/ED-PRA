@@ -32,17 +32,17 @@ int getOpcio(vector<string> options) {
 void casProva1() {
     LinkedQueue<int> prova1;
     try {
-        prova1(10);
+        prova1.enqueue(10);
     } catch (invalid_argument &e) {
         cout << "EXCEPTION:" << e.what() << endl;
     }
     try {
-        prova1(20);
+        prova1.enqueue(20);
     } catch (invalid_argument &e) {
         cout << "EXCEPTION:" << e.what() << endl;
     }
     try {
-        prova1(30);
+        prova1.enqueue(30);
     } catch (invalid_argument &e) {
         cout << "EXCEPTION:" << e.what() << endl;
     }
@@ -76,12 +76,52 @@ void casProva1() {
     } catch (invalid_argument &e) {
         cout << "EXCEPTION:" << e.what() << endl;
     }
-
 }
 
 void casProva2() {
+    LinkedQueue<int> prova2;
     try {
-
+        prova2.enqueue(10);
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        prova2.enqueue(20);
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        prova2.enqueue(30);
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        prova2.print();
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        prova2.dequeue();
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        cout << prova2.getFront() << endl;
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        prova2.dequeue();
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        prova2.dequeue();
+    } catch (invalid_argument &e) {
+        cout << "EXCEPTION:" << e.what() << endl;
+    }
+    try {
+        prova2.print();
     } catch (invalid_argument &e) {
         cout << "EXCEPTION:" << e.what() << endl;
     }
@@ -100,9 +140,9 @@ int main(int argc, char** argv) {
     };
     LinkedQueue<int> lQueue;
     /* PER AL CAS PROVA 1 */
-    //casProva1();
+    casProva1();
     /* PER AL CAS PROVA 2 */
-    //casProva2();
+    casProva2();
 
     do {
         opcio = getOpcio(arr_options);

@@ -83,5 +83,6 @@ void ArrayQueue::print() {
 }*/
 
 ArrayQueue::~ArrayQueue() {
+    this->_data.clear();
 }
 
