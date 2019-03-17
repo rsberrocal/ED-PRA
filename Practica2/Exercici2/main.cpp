@@ -138,12 +138,12 @@ int main(int argc, char** argv) {
         "Imprimir tot el contingut de l'ArrayQueue",
         "Sortir"
     };
-    LinkedQueue<int> lQueue;
     /* PER AL CAS PROVA 1 */
     casProva1();
     /* PER AL CAS PROVA 2 */
     casProva2();
 
+    LinkedQueue<int> lQueue;
     do {
         opcio = getOpcio(arr_options);
         switch (opcio) {

@@ -67,7 +67,6 @@ void LinkedQueue<T>::enqueue(const T key) {
 template <class T>
 void LinkedQueue<T>::dequeue() {
     if (!isEmpty()) {
-        cout << "Element " << this->_front->getElement() << " elimnat" << endl;
         this->_front = this->_front->getNext();
         this->_size--;
     } else {
