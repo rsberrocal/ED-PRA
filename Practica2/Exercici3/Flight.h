@@ -22,21 +22,22 @@ using namespace std;
 class Flight {
 public:
     Flight();
+    Flight(const string id, const string from, const string to, const string time);
     Flight(const Flight& orig);
     virtual ~Flight();
-    string getId();   
-    string getFrom();
-    string getTo();
-    string getTime();
-    void setId(string id);
-    void setFrom(string from);
-    void setTo(string to);
-    void setTime(string time);
+    string getId()const;
+    string getFrom()const;
+    string getTo()const;
+    string getTime()const;
+    void setId(const string id);
+    void setFrom(const string from);
+    void setTo(const string to);
+    void setTime(const string time);
 private:
     string _id;
     string _from;
     string _to;
-    string _time;            
+    string _time;
 };
 
 #endif /* FLIGHT_H */

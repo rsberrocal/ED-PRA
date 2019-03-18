@@ -60,7 +60,7 @@ void LinkedQueue<T>::enqueue(const T key) {
         this->_rear->setNext(newNode);
     }
     this->_rear = newNode;
-    cout << "Element " << key << " agregat" << endl;
+    //cout << "Element " << key << " agregat" << endl;
     this->_size++;
 }
 
@@ -79,7 +79,6 @@ const T LinkedQueue<T>::getFront() {
     if (!isEmpty())
         return this->_front->getElement();
     throw invalid_argument("L’estructura està buida");
-    return -1;
 }
 
 template <class T>

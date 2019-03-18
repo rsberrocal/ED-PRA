@@ -10,43 +10,21 @@
 
 #include <cstddef>
 
-template <class T>
+#include "Flight.h"
+
 class FlightNode {
 public:
     FlightNode();
-    FlightNode(const T el);
+    FlightNode(const Flight el);
     FlightNode(const FlightNode& orig);
     virtual ~FlightNode();
-    T getElement()const;
-    FlightNode<T>* getNext()const;
-    void setNext(FlightNode<T> *n);
+    Flight getElement()const;
+    FlightNode* getNext()const;
+    void setNext(FlightNode *n);
+    void printNode()const;
 private:
-    T element;
-    FlightNode<T>* next;
+    Flight element;
+    FlightNode* next;
 };
-
-template <class T>
-T FlightNode<T>::getElement() const {    
-    return this->element;
-}
-
-template <class T>
-FlightNode<T>::FlightNode(const T el) {
-    this->element = el;
-    this->next = nullptr;
-}
-
-template <class T>
-void FlightNode<T>::setNext(FlightNode* n) {
-    this->next = n;
-}
-
-template <class T>
-FlightNode<T>* FlightNode<T>::getNext() const{
-    return this->next;
-}
-
-template <class T>
-FlightNode<T>::~FlightNode(){};
 #endif /* NODE_H */
 

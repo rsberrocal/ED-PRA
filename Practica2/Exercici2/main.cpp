@@ -135,7 +135,7 @@ int main(int argc, char** argv) {
         "Inserir element a la cua",
         "Treure element de la cua",
         "Consultar el primer element",
-        "Imprimir tot el contingut de l'ArrayQueue",
+        "Imprimir tot el contingut de la LinkedQueue",
         "Sortir"
     };
     /* PER AL CAS PROVA 1 */
