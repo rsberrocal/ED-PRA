@@ -27,7 +27,8 @@ LinkedQueue::~LinkedQueue() {
     cout << "Estructura eliminada" << endl;
 }
 
-void LinkedQueue::enqueue(const Flight key) {
+void LinkedQueue::enqueue(Flight* key) {
+    string id = key->getId();
     FlightNode* newNode = new FlightNode(key);
     if (this->isEmpty()) {
         this->_front = newNode;
@@ -48,9 +49,9 @@ void LinkedQueue::dequeue() {
     }
 }
 
-const FlightNode LinkedQueue::getFront() {
+const FlightNode* LinkedQueue::getFront() {
     if (!isEmpty())
-        return this->_front->getElement();
+        return this->_front;
     throw invalid_argument("L’estructura està buida");
 }
 
@@ -64,7 +65,7 @@ void LinkedQueue::print() {
     FlightNode* actualNode = this->_front;
     std::cout << "[";
     while (actualNode) {
-        std::cout << actualNode->getElement().getId() << "," << actualNode->getElement().getFrom() << "," << actualNode->getElement().getTo() << "," << actualNode->getElement().getTime();
+        actualNode->printNode();
         actualNode = actualNode->getNext();
         if (actualNode)
             std::cout << ", ";

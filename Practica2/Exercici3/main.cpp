@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
                 cout << "Dona'm el temps del vol" << endl;
                 cin >> time;
                 try {
-                    Flight f(id, from, to, time);
+                    Flight* f = new Flight(id, from, to, time);
                     lQueue.enqueue(f);
                 } catch (invalid_argument &e) {
                     cout << "EXCEPTION:" << e.what() << endl;
@@ -76,7 +76,7 @@ int main(int argc, char** argv) {
                 break;
             case 3:
                 try {
-                    cout << "El primer element es " << lQueue.getFront().getElement().getId() << endl;
+                    cout << "El primer element es " << lQueue.getFront()->getElement()->getId() << endl;
                 } catch (invalid_argument &e) {
                     cout << "EXCEPTION:" << e.what() << endl;
                 }

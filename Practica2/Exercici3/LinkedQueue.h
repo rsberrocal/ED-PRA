@@ -18,11 +18,11 @@ public:
     LinkedQueue();
     LinkedQueue(const LinkedQueue& orig);
     virtual ~LinkedQueue();
-    void enqueue(const Flight key);
+    void enqueue(Flight* key);
     void dequeue();
     bool isEmpty();
     void print();
-    const FlightNode getFront();
+    const FlightNode* getFront();
 
 private:
     int _size;

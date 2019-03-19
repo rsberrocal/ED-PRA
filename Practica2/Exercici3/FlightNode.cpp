@@ -18,12 +18,12 @@ FlightNode::FlightNode(const FlightNode& orig) {
 
 }
 
-FlightNode::FlightNode(const Flight el) {
+FlightNode::FlightNode(Flight* el) {
     this->element = el;
     this->next = nullptr;
 }
 
-Flight FlightNode::getElement() const {
+Flight* FlightNode::getElement() const {
     return this->element;
 }
 
@@ -32,7 +32,7 @@ FlightNode* FlightNode::getNext() const {
 }
 
 void FlightNode::printNode() const {
-    cout << this->element.getId() << "," << this->element.getFrom() << "," << this->element.getTo() << "," << this->element.getTime() << endl;
+    cout << this->element->getId() << "," << this->element->getFrom() << "," << this->element->getTo() << "," << this->element->getTime() << endl;
 }
 
 void FlightNode::setNext(FlightNode* n) {

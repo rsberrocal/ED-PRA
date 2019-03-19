@@ -15,15 +15,15 @@
 class FlightNode {
 public:
     FlightNode();
-    FlightNode(const Flight el);
+    FlightNode(Flight* el);
     FlightNode(const FlightNode& orig);
     virtual ~FlightNode();
-    Flight getElement()const;
+    Flight* getElement()const;
     FlightNode* getNext()const;
     void setNext(FlightNode *n);
     void printNode()const;
 private:
-    Flight element;
+    Flight* element;
     FlightNode* next;
 };
 #endif /* NODE_H */
