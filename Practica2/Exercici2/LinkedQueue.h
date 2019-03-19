@@ -12,7 +12,7 @@
 
 #include "Node.h"
 using namespace std;
-
+//Class LinkedQueue with templates
 template <class T>
 class LinkedQueue {
 public:
@@ -31,6 +31,7 @@ private:
     Node<T>* _rear;
 };
 
+//Constructor, node pointers null by default
 template <class T>
 LinkedQueue<T>::LinkedQueue() {
     this->_size = 0;
@@ -39,10 +40,12 @@ LinkedQueue<T>::LinkedQueue() {
     cout << "Estructura creada" << endl;
 }
 
+//On delete, delete each node
 template <class T>
 LinkedQueue<T>::~LinkedQueue() {
     Node<T>* actualNode = this->_front;
     Node<T>* nodeToDelete;
+    //while actualNode is not null, delete and get the next node
     while (actualNode) {
         nodeToDelete = actualNode;
         actualNode = actualNode->getNext();
@@ -51,6 +54,7 @@ LinkedQueue<T>::~LinkedQueue() {
     cout << "Estructura eliminada" << endl;
 }
 
+//On add, creates a new node with key and set it to the last node
 template <class T>
 void LinkedQueue<T>::enqueue(const T key) {
     Node<T>* newNode = new Node<T>(key);
@@ -64,6 +68,7 @@ void LinkedQueue<T>::enqueue(const T key) {
     this->_size++;
 }
 
+//On remove, replace front to next node
 template <class T>
 void LinkedQueue<T>::dequeue() {
     if (!isEmpty()) {
@@ -75,6 +80,7 @@ void LinkedQueue<T>::dequeue() {
     }
 }
 
+//returns the front node, if is empty, throws an error
 template <class T>
 const T LinkedQueue<T>::getFront() {
     if (!isEmpty())
@@ -83,6 +89,7 @@ const T LinkedQueue<T>::getFront() {
     return -1;
 }
 
+//Check if LinkedQueue is empty
 template <class T>
 bool LinkedQueue<T>::isEmpty() {
     if (this->_size == 0)
@@ -90,6 +97,7 @@ bool LinkedQueue<T>::isEmpty() {
     return false;
 }
 
+//On print, get each node and print his element
 template <class T>
 void LinkedQueue<T>::print() {
     Node<T>* actualNode = this->_front;
@@ -102,8 +110,8 @@ void LinkedQueue<T>::print() {
     }
     std::cout << "]" << std::endl;
 }
-//Copy constructor
 
+//Copy constructor
 template <class T>
 LinkedQueue<T>::LinkedQueue(const LinkedQueue& orig) {
     Node <T>* actualNode = orig._front;

@@ -16,6 +16,7 @@
 
 using namespace std;
 
+//Default constructor, copy constructor and delete
 Flight::Flight() {
 }
 
@@ -25,6 +26,7 @@ Flight::Flight(const Flight& orig) {
 Flight::~Flight() {
 }
 
+//Constructor with all parameters
 Flight::Flight(const string id, const string from, const string to, const string time) {
     this->_id = id;
     this->_from = from;
@@ -32,6 +34,7 @@ Flight::Flight(const string id, const string from, const string to, const string
     this->_to = to;
 }
 
+//Getters, setters
 string Flight::getFrom()const {
     return this->_from;
 }

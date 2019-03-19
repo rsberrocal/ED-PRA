@@ -174,8 +174,7 @@ int main(int argc, char** argv) {
                 lQueue.print();
                 break;
         }
-    } while (opcio != 5);
-    //delete &lQueue;
+    } while (opcio != 5);    
     return 0;
 }
 

@@ -8,6 +8,7 @@
 #include <iostream>
 
 using namespace std;
+//LinkedQueue on init, front and read nullptr by default
 
 LinkedQueue::LinkedQueue() {
     this->_size = 0;
@@ -15,6 +16,8 @@ LinkedQueue::LinkedQueue() {
     this->_rear = nullptr;
     cout << "Estructura creada" << endl;
 }
+
+//On delete, delete each node
 
 LinkedQueue::~LinkedQueue() {
     FlightNode* actualNode = this->_front;
@@ -26,6 +29,8 @@ LinkedQueue::~LinkedQueue() {
     }
     cout << "Estructura eliminada" << endl;
 }
+
+//On add, creates a new node with key and set it to the last nodes
 
 void LinkedQueue::enqueue(Flight* key) {
     string id = key->getId();
@@ -40,6 +45,8 @@ void LinkedQueue::enqueue(Flight* key) {
     this->_size++;
 }
 
+//On remove, replace front to next node
+
 void LinkedQueue::dequeue() {
     if (!isEmpty()) {
         this->_front = this->_front->getNext();
@@ -49,17 +56,23 @@ void LinkedQueue::dequeue() {
     }
 }
 
+//returns the front node, if is empty, throws an error
+
 const FlightNode* LinkedQueue::getFront() {
     if (!isEmpty())
         return this->_front;
     throw invalid_argument("L’estructura està buida");
 }
 
+//Check if LinkedQueue is empty
+
 bool LinkedQueue::isEmpty() {
     if (this->_size == 0)
         return true;
     return false;
 }
+
+//On print, get each node and print his element
 
 void LinkedQueue::print() {
     FlightNode* actualNode = this->_front;
@@ -72,6 +85,8 @@ void LinkedQueue::print() {
     }
     std::cout << "]" << std::endl;
 }
+
+//Copy constructor
 
 LinkedQueue::LinkedQueue(const LinkedQueue& orig) {
     FlightNode * actualNode = orig._front;
