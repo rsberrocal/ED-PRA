@@ -14,6 +14,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
+#include <sstream>
+#include <fstream>
 
 #include "Flight.h"
 #include "LinkedQueue.h"
@@ -32,6 +34,24 @@ int getOpcio(vector<string> options) {
     return opcion;
 }
 
+void readFromFile(LinkedQueue* lQ) {
+    ifstream file("flights.csv");
+    string id, from, to, time, line;
+    while (file.good()) {
+        getline(file, id, ',');
+        getline(file, from, ',');
+        getline(file, to, ',');
+        getline(file, time, '\n');
+        try {
+            Flight * f = new Flight(id, from, to, time);
+            lQ->enqueue(f);
+        } catch (invalid_argument &e) {
+            cout << e.what() << endl;
+        }
+    }
+
+}
+
 /*
  * 
  */
@@ -42,6 +62,7 @@ int main(int argc, char** argv) {
     vector<string> arr_options = {
         "Inserir un vol a la cua",
         "Treure un vol de la cua",
+        "Llegir csv",
         "Consultar el primer vol",
         "Imprimir tot el contingut dels vols",
         "Sortir"
@@ -75,17 +96,20 @@ int main(int argc, char** argv) {
                 }
                 break;
             case 3:
+                readFromFile(&lQueue);
+                break;
+            case 4:
                 try {
                     cout << "El primer element es " << lQueue.getFront()->getElement()->getId() << endl;
                 } catch (invalid_argument &e) {
                     cout << "EXCEPTION:" << e.what() << endl;
                 }
                 break;
-            case 4:
+            case 5:
                 lQueue.print();
                 break;
         }
-    } while (opcio != 5);
+    } while (opcio != 6);
 
     return 0;
 }
