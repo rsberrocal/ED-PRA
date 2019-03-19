@@ -100,7 +100,8 @@ int main(int argc, char** argv) {
                 break;
             case 4:
                 try {
-                    cout << "El primer element es " << lQueue.getFront()->getElement()->getId() << endl;
+                    Flight* f = lQueue.getFront()->getElement();
+                    cout << "El primer element es " << f->getId() << "," << f->getFrom() << "," << f->getTo() << "," << f->getTime() << endl;
                 } catch (invalid_argument &e) {
                     cout << "EXCEPTION:" << e.what() << endl;
                 }

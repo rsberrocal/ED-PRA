@@ -32,7 +32,7 @@ FlightNode* FlightNode::getNext() const {
 }
 
 void FlightNode::printNode() const {
-    cout << this->element->getId() << "," << this->element->getFrom() << "," << this->element->getTo() << "," << this->element->getTime() << endl;
+    cout << this->element->getId() << "," << this->element->getFrom() << "," << this->element->getTo() << "," << this->element->getTime();
 }
 
 void FlightNode::setNext(FlightNode* n) {
