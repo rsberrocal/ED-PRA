@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
         "Sortir"
     };
 
-    LinkedQueue<Flight> lQueue;
+    LinkedQueue lQueue;
     do {
         opcio = getOpcio(arr_options);
         switch (opcio) {
@@ -76,7 +76,7 @@ int main(int argc, char** argv) {
                 break;
             case 3:
                 try {
-                    cout << "El primer element es " << lQueue.getFront().getId() << endl;
+                    cout << "El primer element es " << lQueue.getFront().getElement().getId() << endl;
                 } catch (invalid_argument &e) {
                     cout << "EXCEPTION:" << e.what() << endl;
                 }

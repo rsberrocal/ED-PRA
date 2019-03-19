@@ -17,6 +17,7 @@
                    projectFiles="true">
       <itemPath>Flight.cpp</itemPath>
       <itemPath>FlightNode.cpp</itemPath>
+      <itemPath>LinkedQueue.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -48,6 +49,8 @@
       <item path="FlightNode.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="FlightNode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LinkedQueue.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="LinkedQueue.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -81,6 +84,8 @@
       <item path="FlightNode.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="FlightNode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LinkedQueue.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="LinkedQueue.h" ex="false" tool="3" flavor2="0">
       </item>
