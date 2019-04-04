@@ -16,6 +16,7 @@
 #include <vector>
 
 #include "ArrayQueue.h"
+#include "ArrayStack.h"
 
 using namespace std;
 
@@ -141,53 +142,81 @@ void casProva2() {
 }
 
 int main(int argc, char** argv) {
-    int opcio;
-    int key;
-    ArrayQueue aQ(100);
-    vector<string> arr_options = {
-        "Inserir element a la cua",
-        "Treure element de la cua",
-        "Consultar el primer element",
-        "Imprimir tot el contingut de l'ArrayQueue",
-        "Sortir"
-    };
-    /* PER AL CAS PROVA 1 */
-    casProva1();
-    /* PER AL CAS PROVA 2 */
-    casProva2();
-
-    do {
-        opcio = getOpcio(arr_options);
-        switch (opcio) {
-            case 1:
-                cout << "Dona'm un element a afegir" << endl;
-                cin >> key;
-                try {
-                    aQ.enqueue(key);
-                } catch (invalid_argument &e) {
-                    cout << "EXCEPTION:" << e.what() << endl;
-                }
-                break;
-            case 2:
-                try {
-                    aQ.dequeue();
-                } catch (invalid_argument &e) {
-                    cout << "EXCEPTION:" << e.what() << endl;
-                }
-                break;
-            case 3:
-                try {
-                    cout << "El primer numero es " << aQ.getFront() << endl;
-                } catch (invalid_argument &e) {
-                    cout << "EXCEPTION:" << e.what() << endl;
-                }
-                break;
-            case 4:
-                aQ.print();
-                break;
-        }
-    } while (opcio != 5);
+    ArrayStack s(3);
+    int elements[3] = {1, 2, 3};
+    for (int i = 0; i < 3; i++) {
+        s.push(elements[i]);
+    }
+    s.print();
+    try {
+        s.push(40);
+    } catch (string e) {
+        cout << e << endl;
+    }
+    
+    cout << s.top() << endl;
+    
+    s.pop();
+    s.pop();
+    s.print();
+    
+    s.push(4);
+    s.print();
 
     return 0;
 }
+
+///OLD MAIN
+//
+//int main(int argc, char** argv) {
+//    int opcio;
+//    int key;
+//    ArrayQueue aQ(100);
+//    ArrayStack aS(10);
+//    vector<string> arr_options = {
+//        "Inserir element a la cua",
+//        "Treure element de la cua",
+//        "Consultar el primer element",
+//        "Imprimir tot el contingut de l'ArrayQueue",
+//        "Sortir"
+//    };
+//    /* PER AL CAS PROVA 1 */
+//    casProva1();
+//    /* PER AL CAS PROVA 2 */
+//    casProva2();
+//        
+//    do {
+//        opcio = getOpcio(arr_options);
+//        switch (opcio) {
+//            case 1:
+//                cout << "Dona'm un element a afegir" << endl;
+//                cin >> key;
+//                try {
+//                    aQ.enqueue(key);
+//                } catch (invalid_argument &e) {
+//                    cout << "EXCEPTION:" << e.what() << endl;
+//                }
+//                break;
+//            case 2:
+//                try {
+//                    aQ.dequeue();
+//                } catch (invalid_argument &e) {
+//                    cout << "EXCEPTION:" << e.what() << endl;
+//                }
+//                break;
+//            case 3:
+//                try {
+//                    cout << "El primer numero es " << aQ.getFront() << endl;
+//                } catch (invalid_argument &e) {
+//                    cout << "EXCEPTION:" << e.what() << endl;
+//                }
+//                break;
+//            case 4:
+//                aQ.print();
+//                break;
+//        }
+//    } while (opcio != 5);
+//
+//    return 0;
+//}
 

@@ -13,6 +13,7 @@
 #include "Node.h"
 using namespace std;
 //Class LinkedQueue with templates
+
 template <class T>
 class LinkedQueue {
 public:
@@ -24,6 +25,9 @@ public:
     bool isEmpty();
     void print();
     const T getFront();
+    //new methods
+    void enqueueFront(const T key); //add in front
+    void destructor();
 
 private:
     int _size;
@@ -32,6 +36,7 @@ private:
 };
 
 //Constructor, node pointers null by default
+
 template <class T>
 LinkedQueue<T>::LinkedQueue() {
     this->_size = 0;
@@ -41,6 +46,7 @@ LinkedQueue<T>::LinkedQueue() {
 }
 
 //On delete, delete each node
+
 template <class T>
 LinkedQueue<T>::~LinkedQueue() {
     Node<T>* actualNode = this->_front;
@@ -54,7 +60,10 @@ LinkedQueue<T>::~LinkedQueue() {
     cout << "Estructura eliminada" << endl;
 }
 
+
+
 //On add, creates a new node with key and set it to the last node
+
 template <class T>
 void LinkedQueue<T>::enqueue(const T key) {
     Node<T>* newNode = new Node<T>(key);
@@ -67,8 +76,8 @@ void LinkedQueue<T>::enqueue(const T key) {
     cout << "Element " << key << " agregat" << endl;
     this->_size++;
 }
-
 //On remove, replace front to next node
+
 template <class T>
 void LinkedQueue<T>::dequeue() {
     if (!isEmpty()) {
@@ -81,6 +90,7 @@ void LinkedQueue<T>::dequeue() {
 }
 
 //returns the front node, if is empty, throws an error
+
 template <class T>
 const T LinkedQueue<T>::getFront() {
     if (!isEmpty())
@@ -90,6 +100,7 @@ const T LinkedQueue<T>::getFront() {
 }
 
 //Check if LinkedQueue is empty
+
 template <class T>
 bool LinkedQueue<T>::isEmpty() {
     if (this->_size == 0)
@@ -98,6 +109,7 @@ bool LinkedQueue<T>::isEmpty() {
 }
 
 //On print, get each node and print his element
+
 template <class T>
 void LinkedQueue<T>::print() {
     Node<T>* actualNode = this->_front;
@@ -112,6 +124,7 @@ void LinkedQueue<T>::print() {
 }
 
 //Copy constructor
+
 template <class T>
 LinkedQueue<T>::LinkedQueue(const LinkedQueue& orig) {
     Node <T>* actualNode = orig._front;
@@ -130,6 +143,37 @@ LinkedQueue<T>::LinkedQueue(const LinkedQueue& orig) {
         this->_size++;
         actualNode = actualNode->getNext();
     }
+}
+
+//Add element in front 
+
+template <class T>
+void LinkedQueue<T>::enqueueFront(const T key) {
+    Node<T>* newNode = new Node<T>(key);
+    if (this->isEmpty()) {//If is empty set both pointers to newNode
+        this->_front = newNode;
+        this->_rear = newNode;
+    } else {//Else set newNode to front
+        newNode->setNext(this->_front);
+        this->_front = newNode;
+    }
+}
+
+//Delete all elements
+
+template <class T>
+void LinkedQueue<T>::destructor() {
+    Node<T>* nodeToDelete;
+    //while actualNode is not null, delete and get the next node
+    while (this->_front) {
+        nodeToDelete = this->_front;
+        this->_front = this->_front->getNext();
+        delete nodeToDelete;
+    }
+    //while deleting all fronts also i delete rear, so now rear is null;
+    this->_rear = nullptr;
+    //also size = 0
+    this->_size = 0;
 }
 
 #endif /* LINKEDQUEUE_H */

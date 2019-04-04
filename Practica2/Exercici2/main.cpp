@@ -128,55 +128,74 @@ void casProva2() {
 }
 
 int main(int argc, char** argv) {
-    int opcio;
-    int key;
-
-    vector<string> arr_options = {
-        "Inserir element a la cua",
-        "Treure element de la cua",
-        "Consultar el primer element",
-        "Imprimir tot el contingut de la LinkedQueue",
-        "Sortir"
-    };
-    /* PER AL CAS PROVA 1 */
-    casProva1();
-    /* PER AL CAS PROVA 2 */
-    casProva2();
-
-    LinkedQueue<int> lQueue;
-    do {
-        opcio = getOpcio(arr_options);
-        switch (opcio) {
-            case 1:
-                cout << "Dona'm un element a afegir" << endl;
-                cin >> key;
-                try {
-                    lQueue.enqueue(key);
-                } catch (invalid_argument &e) {
-                    cout << "EXCEPTION:" << e.what() << endl;
-                }
-                break;
-            case 2:
-                try {
-                    lQueue.dequeue();
-                } catch (invalid_argument &e) {
-                    cout << "EXCEPTION:" << e.what() << endl;
-                }
-                break;
-            case 3:
-                try {
-                    cout << "El primer element es " << lQueue.getFront() << endl;
-                } catch (invalid_argument &e) {
-                    cout << "EXCEPTION:" << e.what() << endl;
-                }
-                break;
-            case 4:
-                lQueue.print();
-                break;
-        }
-    } while (opcio != 5);    
+    LinkedQueue<int> q;
+    int elements[10] = {6, 7, 8, 9, 10, 1, 2, 3, 4, 5};
+    for (int i = 0; i < 5; i++) {
+        q.enqueue(elements[i]);
+    }
+    for (int i = 5; i < 10; i++) {
+        q.enqueueFront(elements[i]);
+    }
+    
+    q.print();
+    
+    q.destructor();
+    q.print();
+    
     return 0;
 }
+
+//OLD 
+//int main(int argc, char** argv) {
+//    int opcio;
+//    int key;
+//
+//    vector<string> arr_options = {
+//        "Inserir element a la cua",
+//        "Treure element de la cua",
+//        "Consultar el primer element",
+//        "Imprimir tot el contingut de la LinkedQueue",
+//        "Sortir"
+//    };
+//    /* PER AL CAS PROVA 1 */
+//    casProva1();
+//    /* PER AL CAS PROVA 2 */
+//    casProva2();
+//
+//    LinkedQueue<int> lQueue;
+//    do {
+//        opcio = getOpcio(arr_options);
+//        switch (opcio) {
+//            case 1:
+//                cout << "Dona'm un element a afegir" << endl;
+//                cin >> key;
+//                try {
+//                    lQueue.enqueue(key);
+//                } catch (invalid_argument &e) {
+//                    cout << "EXCEPTION:" << e.what() << endl;
+//                }
+//                break;
+//            case 2:
+//                try {
+//                    lQueue.dequeue();
+//                } catch (invalid_argument &e) {
+//                    cout << "EXCEPTION:" << e.what() << endl;
+//                }
+//                break;
+//            case 3:
+//                try {
+//                    cout << "El primer element es " << lQueue.getFront() << endl;
+//                } catch (invalid_argument &e) {
+//                    cout << "EXCEPTION:" << e.what() << endl;
+//                }
+//                break;
+//            case 4:
+//                lQueue.print();
+//                break;
+//        }
+//    } while (opcio != 5);    
+//    return 0;
+//}
 
 
 

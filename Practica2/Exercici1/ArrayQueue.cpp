@@ -30,7 +30,7 @@ void ArrayQueue::dequeue() {
         for (int i = 0; i < this->_size; i++) {
             this->_data[i] = this->_data[i + 1];
         }
-        this->_data[this->_size] = NULL; //null means removed
+        this->_data[this->_size] = false; //null means removed
         this->_size--;
     } else {
         throw invalid_argument("L’estructura està buida");
