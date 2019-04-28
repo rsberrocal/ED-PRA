@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=exercici1
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/exercici1
+CND_ARTIFACT_NAME_Debug=exercici2
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/exercici2
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=exercici1.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/exercici1.tar
+CND_PACKAGE_NAME_Debug=exercici2.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/exercici2.tar
 # Release configuration
-CND_PLATFORM_Release=GNU-Linux
-CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=exercici1
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/exercici1
-CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=exercici1.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/exercici1.tar
+CND_PLATFORM_Release=Cygwin-Windows
+CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
+CND_ARTIFACT_NAME_Release=exercici2
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/exercici2
+CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
+CND_PACKAGE_NAME_Release=exercici2.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/exercici2.tar
 #
 # include compiler specific variables
 #
