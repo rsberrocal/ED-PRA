@@ -17,7 +17,7 @@
 template <class Type>
 class NodeTree {
 public:
-    NodeTree(const Type& data);
+    NodeTree(const Type& data,int key);
     NodeTree(const NodeTree& orig);
     virtual ~NodeTree(); // destructor
     /*Consultors*/
@@ -47,11 +47,12 @@ private:
 };
 
 template <class Type>
-NodeTree<Type>::NodeTree(const Type& data) {
+NodeTree<Type>::NodeTree(const Type& data,int key) {
     this->pLeft = nullptr;
     this->pRight = nullptr;
     this->pParent = nullptr;
     this->value = data;
+    this->key = key;
 }
 
 template <class Type>
@@ -95,8 +96,8 @@ bool NodeTree<Type>::isExternal() const {
 }
 
 template <class Type>
-void NodeTree<Type>::setValue(const Type& data) {
-    this->value = data;
+void NodeTree<Type>::setValue(Type& value){
+    this->value = value;
 }
 
 template <class Type>
@@ -120,7 +121,7 @@ const Type& NodeTree<Type>::getValue() const {
 }
 
 template <class Type>
-int NodeTree<Type>::getKey() const {
+const int NodeTree<Type>::getKey() const {
     return this->key;
 }
 

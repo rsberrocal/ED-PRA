@@ -31,7 +31,7 @@ public:
     string showMountain(int mountainId);
     Mountain& findMountain(int mountainId);
 private:
-    BST<Mountain> tree;
+    BST<Mountain>* tree;
 };
 
 #endif /* BSTMOUNTAINFINDER_H */

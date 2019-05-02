@@ -32,13 +32,13 @@ public:
     int size() const;
     bool isEmpty() const;
     NodeTree<Type>* root();
-    bool search(const Type& element);
+    bool search(int key);
     void showInorder() const;
     void showPreorder() const;
     void showPostorder() const;
     void showLeafNodes() const;
     /*Modificadors*/
-    void insert(const Type& element);
+    void insert(const Type& element,int key);
 private:
     int size(NodeTree<Type>* p) const;
     void showPreorder(NodeTree<Type>* p) const;
@@ -66,12 +66,14 @@ BST<Type>::BST(const BST& orig) {
 template <class Type>
 void BST<Type>::copyNodes(NodeTree<Type>* p, NodeTree<Type>* n) const {
     if (p->isExternal()) {
-        n->setElement(p->getElement());
+        n->setKey(p->getKey());
+        n->setElement(p->getValue());
         return;
     } else {
         NodeTree<Type>* newLeft = new NodeTree<Type>();
         NodeTree<Type>* newRight = new NodeTree<Type>();
-        n->setElement(p->getElement());
+        n->setElement(p->getValue());
+        n->setKey(p->getKey());
         if (p->hasLeft()) {
             n->setLeft(newLeft);
             this->copyNodes(p->left(), n->left());
@@ -94,14 +96,14 @@ BST<Type>::~BST() {
 template <class Type>
 void BST<Type>::deletingNodes(NodeTree<Type>* p) const {
     if (p->isExternal()) {
-        cout << "Eliminant node " << p->getElement() << endl;
+        cout << "Eliminant node " << p->getKey() << endl;
         delete p;
     } else {
         if (p->hasLeft())
             this->deletingNodes(p->left());
         if (p->hasRight())
             this->deletingNodes(p->right());
-        cout << "Elimnant node " << p->getElement() << endl;
+        cout << "Elimnant node " << p->getKey() << endl;
         delete p;
     }
 }
@@ -130,8 +132,8 @@ bool BST<Type>::isEmpty() const {
 }
 
 template <class Type>
-void BST<Type>::insert(const Type& element) {
-    NodeTree<Type>* newNode = new NodeTree<Type>(element);
+void BST<Type>::insert(const Type& element,int key) {
+    NodeTree<Type>* newNode = new NodeTree<Type>(element,key);
     if (this->isEmpty()) {
         this->pRoot = newNode;
     } else {
@@ -139,7 +141,7 @@ void BST<Type>::insert(const Type& element) {
         bool nodeSet = false;
         while (!nodeSet) {
             if (actualNode->isExternal()) {
-                if (actualNode->getElement() < element) {
+                if (actualNode->getKey() < newNode->getKey()) {
                     actualNode->setRight(newNode);
                 } else {
                     actualNode->setLeft(newNode);
@@ -147,7 +149,7 @@ void BST<Type>::insert(const Type& element) {
                 newNode->setParent(actualNode);
                 nodeSet = true;
             } else {
-                if (actualNode->getElement() < element) {
+                if (actualNode->getKey() < newNode->getKey()) {
                     if (!actualNode->hasRight()) {
                         actualNode->setRight(newNode);
                         newNode->setParent(actualNode);
@@ -167,7 +169,7 @@ void BST<Type>::insert(const Type& element) {
             }
         }
     }
-    cout << "Inserta a l'arbre element: " << element << endl;
+    cout << "Inserta a l'arbre element: " << newNode->getKey() << endl;
 }
 
 template <class Type>
@@ -176,17 +178,17 @@ NodeTree<Type>* BST<Type>::root() {
 }
 
 template <class Type>
-bool BST<Type>::search(const Type& element) {
-    bool found = false;
+bool BST<Type>::search(const int key) {
+    bool found = false;    
     if (this->isEmpty()) {
         throw "ERROR: Empty Tree";
     } else {
         NodeTree<Type>* actualNode = this->root();
         while (!found && actualNode) {
-            if (actualNode->getElement() == element) {
+            if (actualNode->getKey() == key) {
                 found = true;
             } else {
-                if (actualNode->getElement() <= element) {
+                if (actualNode->getKey() <= key) {
                     actualNode = actualNode->right();
                 } else {
                     actualNode = actualNode->left();
@@ -211,12 +213,12 @@ void BST<Type>::showInorder() const {
 template <class Type>
 void BST<Type>::showInorder(NodeTree<Type>* p) const {
     if (p->isExternal()) {
-        cout << p->getElement() << ", ";
+        cout << p->getValue().toString() << ", ";
         return;
     } else {
         if (p->hasLeft())
             this->showInorder(p->left());
-        cout << p->getElement() << ", ";
+        cout << p->getValue().toString() << ", ";
         if (p->hasRight())
             this->showInorder(p->right());
     }
@@ -236,14 +238,14 @@ void BST<Type>::showPostorder() const {
 template <class Type>
 void BST<Type>::showPostorder(NodeTree<Type>* p) const {
     if (p->isExternal()) {
-        cout << p->getElement() << ", ";
+        cout << p->getValue().toString() << ", ";
         return;
     } else {
         if (p->hasLeft())
             this->showPostorder(p->left());
         if (p->hasRight())
             this->showPostorder(p->right());
-        cout << p->getElement() << ", ";
+        cout << p->getValue().toString() << ", ";
     }
 }
 
@@ -261,10 +263,10 @@ void BST<Type>::showPreorder() const {
 template <class Type>
 void BST<Type>::showPreorder(NodeTree<Type>* p) const {
     if (p->isExternal()) {
-        cout << p->getElement() << ", ";
+        cout << p->getValue().toString() << ", ";
         return;
     } else {
-        cout << p->getElement() << ", ";
+        cout << p->getValue().toString() << ", ";
         if (p->hasLeft())
             this->showPreorder(p->left());
         if (p->hasRight())
@@ -286,7 +288,7 @@ void BST<Type>::showLeafNodes() const {
 template <class Type>
 void BST<Type>::showLeafNodes(NodeTree<Type>* p) const {
     if (p->isExternal()) {
-        cout << p->getElement() << ", ";
+        cout << p->getValue().toString() << ", ";
         return;
     } else {
         if (p->hasLeft())

@@ -13,11 +13,14 @@
 
 #include "BSTMountainFinder.h"
 
+#include <fstream>
+#include <string>
+
 using namespace std;
 
-BSTMountainFinder::BSTMountainFinder() {
-    BST<Mountain> x;
-    this->tree = x;
+
+BSTMountainFinder::BSTMountainFinder() {    
+    this->tree = new BST<Mountain>();
 }
 
 BSTMountainFinder::BSTMountainFinder(const BSTMountainFinder& orig) {
@@ -28,11 +31,14 @@ BSTMountainFinder::~BSTMountainFinder() {
 
 void BSTMountainFinder::appendMountains(string fileName) {
     ifstream file(fileName);
-    string id, name, height;
+    string id, name, height,tmp;    
+    
     while (file.good()) {
-        getline(file, id, '::');
-        getline(file, name, '::');
+        getline(file, id, ':');        
+        getline(file,tmp,':');
+        getline(file, name, ':');
+        getline(file,tmp,':');
         getline(file, height, '\n');
-        this->tree.insert(new Mountain(id, name, height));
+        this->tree->insert(new Mountain(to_string(id),name,to_string(height)),to_string(id));
     }
 }

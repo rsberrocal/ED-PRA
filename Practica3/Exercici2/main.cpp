@@ -37,14 +37,14 @@ int getOpcio(vector<string> options) {
     return opcion;
 }
 
-void insertMountains(BSTMountainFinder& bts) {
+void insertMountains(BSTMountainFinder* bts) {
     string p = "Mountain_list_small.txt";
     string g = "Mountain_list.txt";
     string option;
     cout << "Quin fitxer vols (P/G)?" << endl;
     cin >> option;
     if (option == "P") {
-        
+        bts->appendMountains(p);
     } else {
 
     }
@@ -52,7 +52,7 @@ void insertMountains(BSTMountainFinder& bts) {
 }
 
 int main(int argc, char** argv) {
-    BSTMountainFinder btsMountain;
+    BSTMountainFinder* btsMountain = new BSTMountainFinder();
     int opcio;
     vector<string> arr_options = {"Inserir Muntanyes", "Mostrar arbre segons ID", "Cercar Muntanyes", "Profunditat de l'arbre", "Sortir"};
 
@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
         opcio = getOpcio(arr_options);
         switch (opcio) {
             case 1:
-                insertMountains(*btsMountain);
+                insertMountains(btsMountain);
                 break;
             case 2:
 
