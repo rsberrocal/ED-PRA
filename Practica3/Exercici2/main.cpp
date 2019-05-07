@@ -43,12 +43,16 @@ void insertMountains(BSTMountainFinder* bts) {
     string option;
     cout << "Quin fitxer vols (P/G)?" << endl;
     cin >> option;
-    if (option == "P") {
+    if (option == "p") {
         bts->appendMountains(p);
     } else {
         bts->appendMountains(g);
     }
 
+}
+
+void showMountains(BSTMountainFinder* bts){
+    Mountain m = bts->findMountain(37);
 }
 
 int main(int argc, char** argv) {
@@ -63,7 +67,7 @@ int main(int argc, char** argv) {
                 insertMountains(btsMountain);
                 break;
             case 2:
-
+                showMountains(btsMountain);
                 break;
             case 3:
 

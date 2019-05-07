@@ -17,7 +17,7 @@
 template <class Type>
 class NodeTree {
 public:
-    NodeTree(const Type& data,int key);
+    NodeTree(Type* data, int key);
     NodeTree(const NodeTree& orig);
     virtual ~NodeTree(); // destructor
     /*Consultors*/
@@ -28,26 +28,25 @@ public:
     bool hasLeft() const;
     bool isRoot() const;
     bool isExternal() const;
-    const Type& getValue() const;
+    Type* getValue();
     const int getKey()const;
     /*Modificadors*/
-    void setElement(const Type& data);
     void setRight(NodeTree<Type>* newRight);
     void setLeft(NodeTree<Type>* newLeft);
     void setParent(NodeTree<Type>* newParent);
-    void setValue(Type& value);
+    void setValue(Type* value);
     void setKey(int key);
 private:
     NodeTree<Type>* pParent;
     NodeTree<Type>* pLeft;
     NodeTree<Type>* pRight;
-    Type value;
+    Type* value;
     int key;
 
 };
 
 template <class Type>
-NodeTree<Type>::NodeTree(const Type& data,int key) {
+NodeTree<Type>::NodeTree(Type* data, int key) {
     this->pLeft = nullptr;
     this->pRight = nullptr;
     this->pParent = nullptr;
@@ -96,7 +95,7 @@ bool NodeTree<Type>::isExternal() const {
 }
 
 template <class Type>
-void NodeTree<Type>::setValue(Type& value){
+void NodeTree<Type>::setValue(Type* value) {
     this->value = value;
 }
 
@@ -116,7 +115,7 @@ void NodeTree<Type>::setParent(NodeTree<Type>* newParent) {
 }
 
 template <class Type>
-const Type& NodeTree<Type>::getValue() const {
+Type* NodeTree<Type>::getValue() {
     return this->value;
 }
 

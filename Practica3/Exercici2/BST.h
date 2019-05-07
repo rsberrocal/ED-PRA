@@ -33,12 +33,13 @@ public:
     bool isEmpty() const;
     NodeTree<Type>* root();
     bool search(int key);
+    Type* getValue(int key);
     void showInorder() const;
     void showPreorder() const;
     void showPostorder() const;
     void showLeafNodes() const;
     /*Modificadors*/
-    void insert(const Type& element, int key);
+    void insert(Type* element, int key);
 private:
     int size(NodeTree<Type>* p) const;
     void showPreorder(NodeTree<Type>* p) const;
@@ -67,12 +68,12 @@ template <class Type>
 void BST<Type>::copyNodes(NodeTree<Type>* p, NodeTree<Type>* n) const {
     if (p->isExternal()) {
         n->setKey(p->getKey());
-        n->setElement(p->getValue());
+        n->setValue(p->getValue());
         return;
     } else {
         NodeTree<Type>* newLeft = new NodeTree<Type>();
         NodeTree<Type>* newRight = new NodeTree<Type>();
-        n->setElement(p->getValue());
+        n->setValue(p->getValue());
         n->setKey(p->getKey());
         if (p->hasLeft()) {
             n->setLeft(newLeft);
@@ -132,7 +133,7 @@ bool BST<Type>::isEmpty() const {
 }
 
 template <class Type>
-void BST<Type>::insert(const Type& element, int key) {
+void BST<Type>::insert(Type* element, int key) {
     NodeTree<Type>* newNode = new NodeTree<Type>(element, key);
     if (this->isEmpty()) {
         this->pRoot = newNode;
@@ -197,6 +198,29 @@ bool BST<Type>::search(const int key) {
         }
     }
     return found;
+}
+
+template <class Type>
+Type* BST<Type>::getValue(int key) {
+    Mountain* mountain = nullptr;
+    bool found = false;
+    if (this->isEmpty()) {
+        throw "ERROR: Empty Tree";
+    } else {
+        NodeTree<Type>* actualNode = this->root();
+        while (!found && actualNode) {
+            if (actualNode->getKey() == key) {
+                mountain = actualNode->getValue();
+            } else {
+                if (actualNode->getKey() <= key) {
+                    actualNode = actualNode->right();
+                } else {
+                    actualNode = actualNode->left();
+                }
+            }
+        }
+    }
+    return mountain;
 }
 
 template <class Type>
