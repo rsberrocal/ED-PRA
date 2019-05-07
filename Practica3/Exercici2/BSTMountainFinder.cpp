@@ -18,8 +18,7 @@
 
 using namespace std;
 
-
-BSTMountainFinder::BSTMountainFinder() {    
+BSTMountainFinder::BSTMountainFinder() {
     this->tree = new BST<Mountain>();
 }
 
@@ -31,14 +30,15 @@ BSTMountainFinder::~BSTMountainFinder() {
 
 void BSTMountainFinder::appendMountains(string fileName) {
     ifstream file(fileName);
-    string id, name, height,tmp;    
-    
+    string id, name, height, tmp;
+
     while (file.good()) {
-        getline(file, id, ':');        
-        getline(file,tmp,':');
+        getline(file, id, ':');
+        getline(file, tmp, ':');
         getline(file, name, ':');
-        getline(file,tmp,':');
+        getline(file, tmp, ':');
         getline(file, height, '\n');
-        this->tree->insert(new Mountain(to_string(id),name,to_string(height)),to_string(id));
+        Mountain* m = new Mountain(stoi(id), name, stoi(height));
+        this->tree->insert(m, stoi(id));
     }
 }

@@ -38,7 +38,7 @@ public:
     void showPostorder() const;
     void showLeafNodes() const;
     /*Modificadors*/
-    void insert(const Type& element,int key);
+    void insert(const Type& element, int key);
 private:
     int size(NodeTree<Type>* p) const;
     void showPreorder(NodeTree<Type>* p) const;
@@ -132,8 +132,8 @@ bool BST<Type>::isEmpty() const {
 }
 
 template <class Type>
-void BST<Type>::insert(const Type& element,int key) {
-    NodeTree<Type>* newNode = new NodeTree<Type>(element,key);
+void BST<Type>::insert(const Type& element, int key) {
+    NodeTree<Type>* newNode = new NodeTree<Type>(element, key);
     if (this->isEmpty()) {
         this->pRoot = newNode;
     } else {
@@ -179,7 +179,7 @@ NodeTree<Type>* BST<Type>::root() {
 
 template <class Type>
 bool BST<Type>::search(const int key) {
-    bool found = false;    
+    bool found = false;
     if (this->isEmpty()) {
         throw "ERROR: Empty Tree";
     } else {

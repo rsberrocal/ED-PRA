@@ -46,7 +46,7 @@ void insertMountains(BSTMountainFinder* bts) {
     if (option == "P") {
         bts->appendMountains(p);
     } else {
-
+        bts->appendMountains(g);
     }
 
 }
