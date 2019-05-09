@@ -211,6 +211,7 @@ Type* BST<Type>::getValue(int key) {
         while (!found && actualNode) {
             if (actualNode->getKey() == key) {
                 mountain = actualNode->getValue();
+                found = true;
             } else {
                 if (actualNode->getKey() <= key) {
                     actualNode = actualNode->right();

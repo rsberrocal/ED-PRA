@@ -47,8 +47,8 @@ string BSTMountainFinder::showMountain(int mountainId) {
 
 }
 
-Mountain& BSTMountainFinder::findMountain(int mountainId) {
-    return *this->tree->getValue(mountainId);
+Mountain* BSTMountainFinder::findMountain(int mountainId) {
+    return this->tree->getValue(mountainId);
 }
 
 

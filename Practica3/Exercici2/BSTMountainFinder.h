@@ -29,7 +29,7 @@ public:
     void appendMountains(string fileName);
     void insertMountain(int mountainId, string name, int height);
     string showMountain(int mountainId);
-    Mountain& findMountain(int mountainId);
+    Mountain* findMountain(int mountainId);
 private:
     BST<Mountain>* tree;
 };
