@@ -56,8 +56,8 @@ string BSTMountainFinder::showMountain(int mountainId) {
     return "" + to_string(m.getId()) + ", " + m.getName() + ", " + to_string(m.getHeight());
 }
 
-Mountain& BSTMountainFinder::findMountain(int mountainId) {
-    return *this->tree->getValue(mountainId);
+Mountain* BSTMountainFinder::findMountain(int mountainId) {
+    return this->tree->getValue(mountainId);
 }
 
 
