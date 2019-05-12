@@ -30,6 +30,7 @@ public:
     void insertMountain(int mountainId, string name, int height);
     string showMountain(int mountainId);
     Mountain& findMountain(int mountainId);
+    void printMountainsByID(int mountainId);
 private:
     BST<Mountain>* tree;
 };

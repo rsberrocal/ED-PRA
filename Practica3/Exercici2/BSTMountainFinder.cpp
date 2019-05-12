@@ -38,13 +38,22 @@ void BSTMountainFinder::appendMountains(string fileName) {
         getline(file, name, ':');
         getline(file, tmp, ':');
         getline(file, height, '\n');
-        Mountain* m = new Mountain(stoi(id), name, stoi(height));
-        this->tree->insert(m, stoi(id));
+        this->insertMountain(stoi(id), name, stoi(height));
     }
 }
 
-string BSTMountainFinder::showMountain(int mountainId) {
+void BSTMountainFinder::insertMountain(int mountainId, string name, int height) {
+    Mountain* m = new Mountain(mountainId, name, height);
+    this->tree->insert(m, mountainId);
+}
 
+void BSTMountainFinder::printMountainsByID(int mountainId) {
+    this->tree->printFromNode(mountainId);
+}
+
+string BSTMountainFinder::showMountain(int mountainId) {
+    Mountain m = findMountain(mountainId);
+    return "" + to_string(m.getId()) + ", " + m.getName() + ", " + to_string(m.getHeight());
 }
 
 Mountain& BSTMountainFinder::findMountain(int mountainId) {

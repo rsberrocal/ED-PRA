@@ -40,6 +40,7 @@ public:
     void showLeafNodes() const;
     /*Modificadors*/
     void insert(Type* element, int key);
+    void printFromNode(int key);
 private:
     int size(NodeTree<Type>* p) const;
     void showPreorder(NodeTree<Type>* p) const;
@@ -48,6 +49,8 @@ private:
     void showLeafNodes(NodeTree<Type>* p)const;
     void deletingNodes(NodeTree<Type>* p)const;
     void copyNodes(NodeTree<Type>* p, NodeTree<Type>* n)const;
+    void printFromNode(NodeTree<Type>* p, int* key);
+    NodeTree<Type>* getNode(int key);
     /*Atributs*/
     NodeTree<Type>* pRoot;
 };
@@ -211,6 +214,7 @@ Type* BST<Type>::getValue(int key) {
         while (!found && actualNode) {
             if (actualNode->getKey() == key) {
                 mountain = actualNode->getValue();
+                found = true;
             } else {
                 if (actualNode->getKey() <= key) {
                     actualNode = actualNode->right();
@@ -221,6 +225,30 @@ Type* BST<Type>::getValue(int key) {
         }
     }
     return mountain;
+}
+
+template <class Type>
+NodeTree<Type>* BST<Type>::getNode(int key) {
+    NodeTree<Type>* node = nullptr;
+    bool found = false;
+    if (this->isEmpty()) {
+        throw "Error: Empty Tree";
+    } else {
+        NodeTree<Type>* actualNode = this->root();
+        while (!found && actualNode) {
+            if (actualNode->getKey() == key) {
+                node = actualNode;
+                found = true;
+            } else {
+                if (actualNode->getKey() <= key) {
+                    actualNode = actualNode->right();
+                } else {
+                    actualNode = actualNode->left();
+                }
+            }
+        }
+    }
+    return node;
 }
 
 template <class Type>
@@ -319,6 +347,44 @@ void BST<Type>::showLeafNodes(NodeTree<Type>* p) const {
             this->showLeafNodes(p->left());
         if (p->hasRight())
             this->showLeafNodes(p->right());
+    }
+}
+
+template <class Type>
+void BST<Type>::printFromNode(int key) {
+    if (this->isEmpty()) {
+        throw "Error: empty tree";
+    } else {
+        int c = 0;
+        this->printFromNode(this->getNode(key), &c);
+    }
+}
+
+template <class Type>
+void BST<Type>::printFromNode(NodeTree<Type>* p, int* count) {
+    if (p == nullptr) {
+        return;
+    } else {
+        cout << p->getValue()->toString() << endl;
+        count++;
+        cout << *count << endl;
+        if (*count > 40) {
+            string opt;
+            cout << "Vol continuar imprimint?(Y/N)" << endl;
+            cin >> opt;
+            if (opt == "Y") {
+                int z = 0;
+                count = &z;
+            } else {
+                return;
+            }
+        }
+        if (p->hasLeft()) {
+            this->printFromNode(p->left(), count);
+        }
+        if (p->hasRight()) {
+            this->printFromNode(p->right(), count);
+        }
     }
 }
 

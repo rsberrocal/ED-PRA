@@ -51,8 +51,11 @@ void insertMountains(BSTMountainFinder* bts) {
 
 }
 
-void showMountains(BSTMountainFinder* bts){
-    Mountain m = bts->findMountain(37);
+void showMountainByID(BSTMountainFinder* bts) {
+    cout << "Dona'm ID" << endl;
+    int id;
+    cin >> id;
+    bts->printMountainsByID(id);
 }
 
 int main(int argc, char** argv) {
@@ -67,7 +70,7 @@ int main(int argc, char** argv) {
                 insertMountains(btsMountain);
                 break;
             case 2:
-                showMountains(btsMountain);
+                showMountainByID(btsMountain);
                 break;
             case 3:
 
