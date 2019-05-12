@@ -49,7 +49,7 @@ private:
     void showLeafNodes(NodeTree<Type>* p)const;
     void deletingNodes(NodeTree<Type>* p)const;
     void copyNodes(NodeTree<Type>* p, NodeTree<Type>* n)const;
-    void printFromNode(NodeTree<Type>* p, int* key);
+    void printFromNode(NodeTree<Type>* p, int& key);
     NodeTree<Type>* getNode(int key);
     /*Atributs*/
     NodeTree<Type>* pRoot;
@@ -361,20 +361,19 @@ void BST<Type>::printFromNode(int key) {
 }
 
 template <class Type>
-void BST<Type>::printFromNode(NodeTree<Type>* p, int* count) {
+void BST<Type>::printFromNode(NodeTree<Type>* p, int& count) {
     if (p == nullptr) {
         return;
     } else {
         cout << p->getValue()->toString() << endl;
         count++;
-        cout << *count << endl;
-        if (*count > 40) {
+        cout << count << endl;
+        if (count > 40) {
             string opt;
             cout << "Vol continuar imprimint?(Y/N)" << endl;
             cin >> opt;
             if (opt == "Y") {
-                int z = 0;
-                count = &z;
+                count = 0;
             } else {
                 return;
             }
