@@ -13,6 +13,9 @@
 
 #include <cstdlib>
 
+#include "MaxHeap.h"
+#include "NodeMountain.h"
+
 using namespace std;
 
 /*
@@ -20,6 +23,11 @@ using namespace std;
  */
 int main(int argc, char** argv) {
 
+    MaxHeap<NodeMountain> m;
+    NodeMountain* mountain1 = new NodeMountain(10, "eqwe", 3213);
+    NodeMountain* mountain2 = new NodeMountain(12, "eqwe", 3300);
+    m.insert(10, mountain1);
+    m.insert(12, mountain2);
     return 0;
 }
 

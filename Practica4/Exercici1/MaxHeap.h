@@ -14,7 +14,10 @@
 #ifndef MAXHEAP_H
 #define MAXHEAP_H
 
-#define <vector>
+#include <vector>
+#include<iostream>
+
+#include "NodeMountain.h"
 
 using namespace std;
 
@@ -24,67 +27,77 @@ public:
     MaxHeap();
     MaxHeap(const MaxHeap &orig);
     virtual ~MaxHeap();
-    
+
     int size();
     bool isEmpty();
-    void insert(int key, Type& element);
+    void insert(int key, Type* element);
     int max(); //return the maxID
     Type& maxValues();
     void removeMax();
     void printHeap();
     Type& search();
+    vector<Type*>* data;
 private:
-   vector<Type>* data; 
 };
 
 template <class Type>
-MaxHeap<Type>::MaxHeap(){
-    vector
+MaxHeap<Type>::MaxHeap() {
+    cout << "Creant Heap" << endl;
+    vector<Type*>* v = new vector<Type*>();
+    this->data = v;
 }
 
 template <class Type>
-MaxHeap<Type>::MaxHeap(const MaxHeap& orig){
-    
+MaxHeap<Type>::MaxHeap(const MaxHeap& orig) {
+
 }
 
 template <class Type>
-MaxHeap<Type>::~MaxHeap(){
-    
+MaxHeap<Type>::~MaxHeap() {
+    cout << "Deleting Heap" << endl;
 }
 
 template <class Type>
-void MaxHeap<Type>::insert(int key, Type& element){
-    
+void MaxHeap<Type>::insert(int key, Type* element) {
+    this->data->push_back(element);
+    NodeMountain* max = this->data->front();
+    if (element->getHeight() > max->getHeight())
+        cout << "SWAP" << endl;
 }
 
 template <class Type>
-bool MaxHeap<Type>::isEmpty(){
-    
+bool MaxHeap<Type>::isEmpty() {
+    return this->size() == 0;
 }
 
 template <class Type>
-int MaxHeap<Type>::max(){
-    
+int MaxHeap<Type>::size() {
+    return this->data.size();
 }
 
 template <class Type>
-Type& MaxHeap<Type>::maxValues(){
-    
+int MaxHeap<Type>::max() {
+
 }
 
 template <class Type>
-void MaxHeap<Type>::printHeap(){
-    
+Type& MaxHeap<Type>::maxValues() {
+
 }
 
 template <class Type>
-void MaxHeap<Type>::removeMax(){
-    
+void MaxHeap<Type>::printHeap() {
+
 }
 
 template <class Type>
-Type& MaxHeap<Type>::search(){
-    
+void MaxHeap<Type>::removeMax() {
+
+}
+
+template <class Type>
+Type& MaxHeap<Type>::search() {
+
 }
 
 #endif /* MAXHEAP_H */
