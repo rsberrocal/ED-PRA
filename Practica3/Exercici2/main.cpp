@@ -73,10 +73,10 @@ int main(int argc, char** argv) {
                 showMountainByID(btsMountain);
                 break;
             case 3:
-
+                //
                 break;
             case 4:
-
+                //Profunditat
                 break;
         }
     } while (opcio != 5);

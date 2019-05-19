@@ -24,10 +24,19 @@ using namespace std;
 int main(int argc, char** argv) {
 
     MaxHeap<NodeMountain> m;
+    NodeMountain* tmp;
     NodeMountain* mountain1 = new NodeMountain(10, "eqwe", 3213);
     NodeMountain* mountain2 = new NodeMountain(12, "eqwe", 3300);
+    NodeMountain* mountain3 = new NodeMountain(14, "eqwe", 3500);
+    NodeMountain* mountain4 = new NodeMountain(15, "eqwe", 2800);
+    NodeMountain* mountain5 = new NodeMountain(20, "eqwe", 1300);
     m.insert(10, mountain1);
     m.insert(12, mountain2);
+    m.insert(14, mountain3);
+    m.insert(15, mountain4);
+    tmp = m.parent(2);
+    int x = tmp->getKey();
+    m.insert(20, mountain5);
     return 0;
 }
 

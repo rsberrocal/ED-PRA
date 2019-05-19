@@ -35,7 +35,11 @@ public:
     Type& maxValues();
     void removeMax();
     void printHeap();
-    Type& search();
+    Type* left(int pos);
+    Type* right(int pos);
+    Type* parent(int pos);
+    Type* getRoot();
+    Type* search();
     vector<Type*>* data;
 private:
 };
@@ -60,9 +64,19 @@ MaxHeap<Type>::~MaxHeap() {
 template <class Type>
 void MaxHeap<Type>::insert(int key, Type* element) {
     this->data->push_back(element);
-    NodeMountain* max = this->data->front();
-    if (element->getHeight() > max->getHeight())
-        cout << "SWAP" << endl;
+    NodeMountain* parent = this->parent(this->size() - 1);
+    NodeMountain* current = this->data->at(this->data->size() - 1);
+    cout << "Parent Element " << parent->getKey() << endl;
+    cout << "Actual Element " << current->getKey() << endl;
+    bool needSwap = true;
+    while (needSwap) {
+        if (current->getHeight() > parent->getHeight()) {
+            cout << "SWAP" << endl;
+            swap(current, parent);
+        }
+    }
+    cout << "Parent Element " << parent->getKey() << endl;
+    cout << "Actual Element " << current->getKey() << endl;
 }
 
 template <class Type>
@@ -72,7 +86,7 @@ bool MaxHeap<Type>::isEmpty() {
 
 template <class Type>
 int MaxHeap<Type>::size() {
-    return this->data.size();
+    return this->data->size();
 }
 
 template <class Type>
@@ -96,8 +110,28 @@ void MaxHeap<Type>::removeMax() {
 }
 
 template <class Type>
-Type& MaxHeap<Type>::search() {
+Type* MaxHeap<Type>::search() {
 
+}
+
+template <class Type>
+Type* MaxHeap<Type>::left(int pos) {
+    return this->data->at((2 * pos) + 1);
+}
+
+template <class Type>
+Type* MaxHeap<Type>::right(int pos) {
+    return this->data->at((2 * pos) + 2);
+}
+
+template <class Type>
+Type* MaxHeap<Type>::parent(int pos) {
+    return this->data->at((pos - 1) / 2);
+}
+
+template <class Type>
+Type* MaxHeap<Type>::getRoot() {
+    return this->data->front();
 }
 
 #endif /* MAXHEAP_H */
