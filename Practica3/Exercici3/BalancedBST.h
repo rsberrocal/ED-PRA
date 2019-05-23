@@ -37,9 +37,13 @@ public:
     void showPreorder() const;
     void showPostorder() const;
     void showLeafNodes() const;
+    int height();
+    int depth();
     /*Modificadors*/
     void insert(const Type& element);
 private:
+    bool needRotate();
+    int getBalanceFactor();
     int size(NodeTree<Type>* p) const;
     void showPreorder(NodeTree<Type>* p) const;
     void showPostorder(NodeTree<Type>* p) const;
@@ -47,6 +51,8 @@ private:
     void showLeafNodes(NodeTree<Type>* p)const;
     void deletingNodes(NodeTree<Type>* p)const;
     void copyNodes(NodeTree<Type>* p, NodeTree<Type>* n)const;
+    int height(NodeTree<Type>* p);
+    int depth(NodeTree<Type>* p);
     /*Atributs*/
     NodeTree<Type>* pRoot;
 };
@@ -296,5 +302,45 @@ void BalancedBST<Type>::showLeafNodes(NodeTree<Type>* p) const {
     }
 }
 
+template <class Type>
+int BalancedBST<Type>::height() {
+    if (isEmpty()) {
+        return 0;
+    } else {
+        return this->height(this->pRoot);
+    }
+}
+
+template <class Type>
+int BalancedBST<Type>::height(NodeTree<Type>* p) {
+    if (p == nullptr) {
+        return 0;
+    } else {
+        return max(height(p->left()), height(p->right())) + 1;
+    }
+}
+
+template <class Type>
+int BalancedBST<Type>::depth() {
+
+}
+
+template <class Type>
+int BalancedBST<Type>::depth(NodeTree<Type>* p) {
+    if (p == nullptr) {
+        return 0;
+    } else {
+        return (p->parent()) + 1;
+    }
+}
+
+template <class Type>
+bool BalancedBST<Type>::needRotate() {
+
+}
+
+int BalancedBST<Type>::getBalanceFactor() {
+
+}
 #endif /* BALANCEDBST_H */
 

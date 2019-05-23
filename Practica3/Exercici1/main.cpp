@@ -23,15 +23,17 @@ using namespace std;
 int main(int argc, char** argv) {
     /* CAS DE PROVA */
     BST<int> bts;
-    int testArray [] = {2,0,8,45,76,5,3,40};
-    for(int i = 0; i<8;i++){
+    int testArray [] = {2, 0, 8, 45, 76, 5, 3, 40};
+    for (int i = 0; i < 8; i++) {
         bts.insert(testArray[i]);
-    }     
-    
+    }
+
     bts.showPreorder();
     bts.showInorder();
     bts.showPostorder();
     bts.showLeafNodes();
+    int height = bts.height();
+    int depth = bts.depth();
     return 0;
 }
 
